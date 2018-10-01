@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="An interactive graph of the flux order relations of Escherichia coli">
+    <meta name="keywords" content="Flux order relations, Escherichia coli, Metabolic modelling">
+    <meta name="author" content="Semidán Robaina Estévez">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DAG</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.16/cytoscape.js"></script>
+    <script src="https://unpkg.com/dagre@0.7.4/dist/dagre.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.2.1/cytoscape-dagre.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+    <script src="libs/cytoscape.js"></script>
+    <script src="libs/dagre.js"></script>
+    <script src="libs/cytoscape-dagre.js"></script>
+    <script src="libs/jquery-3.3.1.min.js"></script>
+    <script src="libs/plotly-latest.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=default" async></script> -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <h1 style="text-align: center;">Flux order relations of <em>Escherichia coli</em></h1>
+  <!-- <p style="text-align:justify;">A metabolic network operating at steady-state satisfies the constraints:
+  $$Sv=0$$
+  </p> -->
+  <div id="cy"></div>
+  <h2><span id="rxnName"></span></h2>
+  <div id="pieChart"></div>
+  <div id="subcy"></div>
+
+  <script src="data/graphLayoutOptions.js"></script>
+  <script src="data/graphData.js"></script>
+  <script src="data/graphStyle.js"></script>
+  <script src="sketch.js"></script>
+
+</body>
+
+</html>

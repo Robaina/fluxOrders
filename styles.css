@@ -1,0 +1,46 @@
+body {
+  min-height: 100%;
+  margin: 10px;
+  padding: 0px;
+  background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134));
+}
+
+html {
+  min-height: 100%;
+}
+
+#cy {
+  width: 40%;
+  height: 55%;
+  position: absolute;
+  padding: 0%;
+  top: 0px;
+  left: 10%;
+  right: 0px;
+  /* border: 3px solid #575757; */
+}
+
+#subcy {
+  width: 50%;
+  height: 85%;
+  position: absolute;
+  padding: 0%;
+  top: 10%;
+  left: 48%;
+  right: 0px;
+  /* background-color: rgba(185, 185, 185, 0.5) */
+}
+
+#pieChart {
+  position: absolute;
+  height: 50%;
+  overflow: hidden;
+  left: 10%;
+  top: 50%;
+}
+
+#rxnName {
+  position: absolute;
+  left: 20%;
+  top: 55%;
+}
