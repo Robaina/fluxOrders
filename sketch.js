@@ -94,7 +94,7 @@ function selectNodes(cy, nodeID) {
 function plotSubGraph(cy, subcy, nodeID) {
   subcy.elements().remove();
   for (element of [cy.$(nodeID), childrenNodes, parentNodes, childrenEdges, parentEdges]) {
-    subcy.add( element.jsons() );
+    subcy.add(element.jsons());
   }
   subcy.layout(options).run();
 };
