@@ -65,10 +65,6 @@ cy.on('click tap', 'node', function(event) {
   selectNodes(cy, nodeID);
   plotSubGraph(cy, subcy, nodeID)
   plotPieChart(nodeID);
-
-  document.getElementById('rxnName').innerHTML = cy.$(nodeID).data('rxnName');
-  // + ' ' + childrenNodes.length
-  // + ' ' + parentNodes.length;
 });
 
 // Helper functions
@@ -208,6 +204,8 @@ function plotPieChart(nodeID) {
   };
 
   Plotly.newPlot('pieChart', pieData, pieLayout);
-  document.getElementById('rxnName').innerHTML = cy.$(nodeID).data('rxnName');
+  document.getElementById('reaction').innerHTML = cy.$(nodeID).data('rxnName');
+  // + ' ' + childrenNodes.length
+  // + ' ' + parentNodes.length;
 
 };
