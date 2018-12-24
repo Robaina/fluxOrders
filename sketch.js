@@ -33,14 +33,13 @@ cy.$('#ACONTa').renderedPosition('x', xposACONTa + 25);
 xposACONTb = cy.$('#ACONTb').renderedPosition('x');
 cy.$('#ACONTb').renderedPosition('x', xposACONTb + 50);
 
-// Highlight nodes when hovering
-cy.on('mouseover', 'node', function(event) {
-  selectedNode = cy.$('#' + this.id());
-  oldColor = selectedNode.css('background-color');
-  selectedNode.css('background-color', '#17cfad');
-});
-cy.on('mouseout', 'node', function(event) {
-  selectedNode.css('background-color', oldColor);
+// Interactive block
+cy.on('click tap mouseover', 'node', function(event) {
+
+  let nodeID = '#' + this.id();
+  selectNodes(cy, nodeID);
+  plotSubGraph(cy, subcy, nodeID)
+  plotPieChart(nodeID);
 });
 
 subcy.on('mouseover', 'node', function(event) {
@@ -56,15 +55,6 @@ subcy.on('mouseout', 'node', function(event) {
   selectedNode.css('label', oldLabel);
   selectedNode.css('text-background-opacity', 0);
   selectedNode.css('background-color', oldColor);
-});
-
-// Interactive block
-cy.on('click tap', 'node', function(event) {
-
-  let nodeID = '#' + this.id();
-  selectNodes(cy, nodeID);
-  plotSubGraph(cy, subcy, nodeID)
-  plotPieChart(nodeID);
 });
 
 // Helper functions

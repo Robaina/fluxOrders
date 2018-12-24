@@ -1,6 +1,6 @@
 body {
   min-height: 100%;
-  margin: 10px;
+  /* margin: 10px; */
   padding: 0px;
   background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134));
 }
