@@ -13,10 +13,13 @@ let subcy = cytoscape({
 // Initialize graph
 let nodeID = '#PFL';
 let selectedNode = null;
+let buttonPressed = false;
 let oldLabel, oldColor;
 selectNodes(cy, nodeID);
 cy.layout(options).run();
-plotSubGraph(cy, subcy, nodeID)
+document.getElementById("subcy").style.display = "none";
+document.getElementById("pieChartContainer").style.display = "none";
+plotSubGraph(cy, subcy, nodeID);
 plotPieChart(nodeID);
 
 // Modify the position of some nodes a little bit
@@ -35,10 +38,9 @@ cy.$('#ACONTb').renderedPosition('x', xposACONTb + 50);
 
 // Interactive block
 cy.on('click tap mouseover', 'node', function(event) {
-
   let nodeID = '#' + this.id();
   selectNodes(cy, nodeID);
-  plotSubGraph(cy, subcy, nodeID)
+  plotSubGraph(cy, subcy, nodeID);
   plotPieChart(nodeID);
 });
 
@@ -58,6 +60,21 @@ subcy.on('mouseout', 'node', function(event) {
 });
 
 // Helper functions
+function showSubGraph() {
+  buttonPressed = !buttonPressed;
+  if (buttonPressed) {
+    document.getElementById("cy").style.display = "none";
+    document.getElementById("subcy").style.display = "initial";
+    document.getElementById("pieChartContainer").style.display = "initial";
+    document.getElementById("subgraphButton").innerHTML = "FullGraph";
+  } else {
+    document.getElementById("cy").style.display = "initial";
+    document.getElementById("subcy").style.display = "none";
+    document.getElementById("pieChartContainer").style.display = "none";
+    document.getElementById("subgraphButton").innerHTML = "SubGraph";
+  }
+}
+
 function selectNodes(cy, nodeID) {
 
   childrenNodes = cy.$(nodeID).successors('node');

@@ -10,13 +10,14 @@ html {
 }
 
 #cy {
-  width: 45%;
-  height: 55%;
+  width: 100%;
+  height: 100%;
   position: absolute;
   padding: 0%;
   top: 0px;
-  left: 10%;
+  left: 0%;
   right: 0px;
+  z-index: 0;
   /* border: 3px solid #575757; */
 }
 
@@ -43,4 +44,28 @@ html {
   position: absolute;
   left: 20%;
   top: 55%;
+}
+
+.button {
+  padding: 1vmax;
+  font-size: 2.5vmax;
+  width: 14vmax;
+  background-color: rgb(12, 165, 170);
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 1em 0em;
+  cursor: pointer;
+  border-radius: 1vmax;
+  user-select: none;
+  outline: none;
+  box-shadow: 0 0.5vmax rgb(221, 221, 221);
+  position: absolute;
+  z-index: 1;
+}
+.button:active {
+  box-shadow: 0 0.3vmax rgb(102, 102, 102);
+  transform: translateY(4px);
 }
