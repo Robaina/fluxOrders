@@ -9,35 +9,46 @@ html {
   min-height: 100%;
 }
 
+h1 {
+  z-index: -1;
+}
+
 #cy {
-  width: 100%;
+  width: 80%;
   height: 100%;
   position: absolute;
+  margin-left: 10%;
+  margin-right: 10%;
   padding: 0%;
   top: 0px;
   left: 0%;
   right: 0px;
   z-index: 0;
-  /* border: 3px solid #575757; */
 }
 
 #subcy {
   width: 50%;
   height: 85%;
   position: absolute;
+  border: 0%;
   padding: 0%;
   top: 10%;
-  left: 48%;
+  left: 40%;
   right: 0px;
+  z-index: 0;
   /* background-color: rgba(185, 185, 185, 0.5) */
 }
 
+#pieChartContainer {
+  /* position: absolute; */
+}
 #pieChart {
   position: absolute;
   height: 50%;
   overflow: hidden;
   left: 10%;
   top: 50%;
+  z-index: 1;
 }
 
 #reaction {
