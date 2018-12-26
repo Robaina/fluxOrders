@@ -37,8 +37,17 @@ xposACONTb = cy.$('#ACONTb').renderedPosition('x');
 cy.$('#ACONTb').renderedPosition('x', xposACONTb + 50);
 
 // Interactive block
-cy.on('click tap mouseover', 'node', function(event) {
-  let nodeID = '#' + this.id();
+
+cy.on('mouseover', 'node', function(event) {
+  selectedNode = cy.$('#' + this.id());
+  cy.$(selectedNode).classes('selectedNode');
+});
+cy.on('mouseout', 'node', function(event) {
+  cy.$(selectedNode).classes('node');
+});
+
+cy.on('click tap', 'node', function(event) {
+  nodeID = cy.$('#' + this.id());
   selectNodes(cy, nodeID);
   plotSubGraph(cy, subcy, nodeID);
   plotPieChart(nodeID);
@@ -99,7 +108,8 @@ function plotSubGraph(cy, subcy, nodeID) {
   for (element of [cy.$(nodeID), childrenNodes, parentNodes, childrenEdges, parentEdges]) {
     subcy.add(element.jsons());
   }
-  subcy.layout(options).run();
+  subcy.layout(subGraphOptions).run();
+  subcy.$('node').css('font-size', 175);
 };
 
 function plotPieChart(nodeID) {

@@ -1,9 +1,9 @@
-let options = {
+let subGraphOptions = {
     // dagre options
     name: 'dagre',
-    nodeSep: undefined, // the separation between adjacent nodes in the same rank
+    nodeSep: 250, // the separation between adjacent nodes in the same rank
     edgeSep: undefined, // the separation between adjacent edges in the same rank
-    rankSep: 1000, // the separation between  nodes in different ranks
+    rankSep: 500, // the separation between  nodes in different ranks
     rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,
     ranker: 'tight-tree', // Type of algorithm to assign a rank to each node in the input graph. Possible values: 'network-simplex', 'tight-tree' or 'longest-path'
     minLen: function( edge ){ return 1; }, // number of ranks to keep between the source and target of the edge
@@ -12,7 +12,7 @@ let options = {
     // general layout options
     fit: true, // whether to fit to viewport
     padding: undefined, // fit padding
-    spacingFactor: 1, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
+    spacingFactor: 1.5, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
     nodeDimensionsIncludeLabels: true, // whether labels should be included in determining the space used by a node
     animate: false, // whether to transition the node positions
     animateFilter: function( node, i ){ return true; }, // whether to animate specific nodes when animation is on; non-animated nodes immediately go to their final positions

@@ -26,35 +26,38 @@ h1 {
   z-index: 0;
 }
 
-#subcy {
-  width: 50%;
-  height: 85%;
-  position: absolute;
-  border: 0%;
-  padding: 0%;
-  top: 10%;
-  left: 40%;
-  right: 0px;
-  z-index: 0;
-  /* background-color: rgba(185, 185, 185, 0.5) */
-}
-
 #pieChartContainer {
-  /* position: absolute; */
+  position: absolute;
+  top: 25%;
+  left: 10%;
+  height: 60%;
+  width: 40%;
+  z-index: 1;
 }
 #pieChart {
-  position: absolute;
-  height: 50%;
+  position: relative;
   overflow: hidden;
-  left: 10%;
-  top: 50%;
-  z-index: 1;
+  left: 0%;
+  top: 0%;
 }
 
 #reaction {
+  position: relative;
+  text-align: center;
+  top: 10%;
+}
+
+#subcy {
   position: absolute;
-  left: 20%;
-  top: 55%;
+  width: 48%;
+  height: 75%;
+  border: 0%;
+  padding: 0%;
+  top: 10%;
+  left: 50%;
+  right: 0%;
+  z-index: 0;
+  /* background-color: rgba(185, 185, 185, 0.5) */
 }
 
 .button {
