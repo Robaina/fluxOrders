@@ -61,10 +61,12 @@ initializeGraph(selectedNodeID);
 // Modify the position of some nodes a little bit
 xposGLYCDx = cy.$('#GLYCDx').renderedPosition('x');
 yposGLYCDx = cy.$('#GLYCDx').renderedPosition('y');
+xposGLYK = cy.$('#GLYK').renderedPosition('x');
 yposGLYK = cy.$('#GLYK').renderedPosition('y');
-cy.$('#GLYCDx').renderedPosition('x', xposGLYCDx - 150);
-cy.$('#GLYCDx').renderedPosition('y', yposGLYCDx + 50);
-cy.$('#GLYK').renderedPosition('y', yposGLYK + 50);
+cy.$('#GLYCDx').renderedPosition('x', (1 - 0.5) * xposGLYCDx);
+cy.$('#GLYCDx').renderedPosition('y', (1 + 0.1) * yposGLYCDx);
+cy.$('#GLYK').renderedPosition('x', (1 + 0.45) * xposGLYK);
+cy.$('#GLYK').renderedPosition('y', (1 + 0.09) * yposGLYK);
 xposATPS4rpp = cy.$('#ATPS4rpp').renderedPosition('x');
 cy.$('#ATPS4rpp').renderedPosition('x', xposATPS4rpp - 50);
 xposACONTa = cy.$('#ACONTa').renderedPosition('x');
