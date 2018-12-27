@@ -1,3 +1,33 @@
+
+let rxnNameLabels = rxnLabels = [];
+let option;
+let nodeID = "#CS"; //"#PFL";
+let selectedNode = null;
+let buttonPressed = false;
+let oldLabel, oldColor;
+let inputRxnName, inputRxnLabel;
+
+// Retrieve array of reaction names and create dropdown list
+for (node of data['nodes']) {
+  inputRxnName = node['data']['rxnName'];
+  inputRxnLabel = node['data']['label'];
+  rxnNameLabels.push(inputRxnName);
+  rxnLabels.push(inputRxnLabel);
+  option = document.createElement('option');
+  option.text = inputRxnName + " (" + inputRxnLabel + ")";
+  option.value = inputRxnLabel;
+  option.setAttribute("id", inputRxnLabel);
+  if ("#" + inputRxnLabel === nodeID) {
+    option.selected = "selected";
+  }
+  document.getElementById("select-list").add(option);
+}
+function changeSelectedReaction() {
+  let selector = document.getElementById("select-list");
+  nodeID = "#" + selector[selector.selectedIndex].value;
+  initializeGraph(nodeID);
+}
+
 // Define graph object
 let cy = cytoscape({
   container: document.getElementById('cy'),
@@ -11,16 +41,16 @@ let subcy = cytoscape({
 });
 
 // Initialize graph
-let nodeID = '#PFL';
-let selectedNode = null;
-let buttonPressed = false;
-let oldLabel, oldColor;
-selectNodes(cy, nodeID);
-cy.layout(options).run();
-document.getElementById("subcy").style.display = "none";
-document.getElementById("pieChartContainer").style.display = "none";
-plotSubGraph(cy, subcy, nodeID);
-plotPieChart(nodeID);
+function initializeGraph(nodeID) {
+  selectNodes(cy, nodeID);
+  cy.layout(options).run();
+  document.getElementById("subcy").style.display = "none";
+  document.getElementById("pieChartContainer").style.display = "none";
+  plotSubGraph(cy, subcy, nodeID);
+  plotPieChart(nodeID);
+}
+
+initializeGraph(nodeID);
 
 // Modify the position of some nodes a little bit
 xposGLYCDx = cy.$('#GLYCDx').renderedPosition('x');
@@ -48,6 +78,7 @@ cy.on('mouseout', 'node', function(event) {
 
 cy.on('click tap', 'node', function(event) {
   nodeID = cy.$('#' + this.id());
+  document.getElementById(this.id()).selected = "selected";
   selectNodes(cy, nodeID);
   plotSubGraph(cy, subcy, nodeID);
   plotPieChart(nodeID);
@@ -73,11 +104,13 @@ function showSubGraph() {
   buttonPressed = !buttonPressed;
   if (buttonPressed) {
     document.getElementById("cy").style.display = "none";
+    document.getElementById("reaction-form").style.display = "none";
     document.getElementById("subcy").style.display = "initial";
     document.getElementById("pieChartContainer").style.display = "initial";
     document.getElementById("subgraphButton").innerHTML = "FullGraph";
   } else {
     document.getElementById("cy").style.display = "initial";
+    document.getElementById("reaction-form").style.display = "initial";
     document.getElementById("subcy").style.display = "none";
     document.getElementById("pieChartContainer").style.display = "none";
     document.getElementById("subgraphButton").innerHTML = "SubGraph";
@@ -109,6 +142,7 @@ function plotSubGraph(cy, subcy, nodeID) {
     subcy.add(element.jsons());
   }
   subcy.layout(subGraphOptions).run();
+  subcy.fit();
   subcy.$('node').css('font-size', 175);
 };
 

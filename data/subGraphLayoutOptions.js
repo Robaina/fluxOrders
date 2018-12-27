@@ -1,7 +1,7 @@
 let subGraphOptions = {
     // dagre options
     name: 'dagre',
-    nodeSep: 250, // the separation between adjacent nodes in the same rank
+    nodeSep: 150, // the separation between adjacent nodes in the same rank
     edgeSep: undefined, // the separation between adjacent edges in the same rank
     rankSep: 500, // the separation between  nodes in different ranks
     rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,

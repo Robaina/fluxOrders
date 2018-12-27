@@ -32,9 +32,15 @@
   <!-- <p style="text-align:justify;">A metabolic network operating at steady-state satisfies the constraints:
   $$Sv=0$$
   </p> -->
+  <form id="reaction-form">
+    <select name="reactions" id="select-list" onchange="changeSelectedReaction()">
+    </select>
+    <input type="submit" id="reaction-input" value="Submit">
+  </form>
+
   <div id="cy"></div>
 
-  <button class="button" id="subgraphButton" onclick="showSubGraph()" ontouch="extractSubGraph()">SubGraph</button>
+  <button class="button" id="subgraphButton" onclick="showSubGraph()" ontouch="showSubGraph()">SubGraph</button>
 
   <div id="pieChartContainer">
     <h2 id="reaction"></h2>
