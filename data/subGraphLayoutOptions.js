@@ -1,7 +1,7 @@
 let subGraphOptions = {
     // dagre options
     name: 'dagre',
-    nodeSep: 150, // the separation between adjacent nodes in the same rank
+    nodeSep: undefined, // the separation between adjacent nodes in the same rank
     edgeSep: undefined, // the separation between adjacent edges in the same rank
     rankSep: 500, // the separation between  nodes in different ranks
     rankDir: 'TB', // 'TB' for top to bottom flow, 'LR' for left to right,
@@ -10,9 +10,9 @@ let subGraphOptions = {
     edgeWeight: function( edge ){ return 1; }, // higher weight edges are generally made shorter and straighter than lower weight edges
 
     // general layout options
-    fit: true, // whether to fit to viewport
-    padding: undefined, // fit padding
-    spacingFactor: 1.5, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
+    // fit: true, // whether to fit to viewport
+    // padding: 100, // fit padding
+    spacingFactor: 1, // Applies a multiplicative factor (>0) to expand or compress the overall area that the nodes take up
     nodeDimensionsIncludeLabels: true, // whether labels should be included in determining the space used by a node
     animate: false, // whether to transition the node positions
     animateFilter: function( node, i ){ return true; }, // whether to animate specific nodes when animation is on; non-animated nodes immediately go to their final positions
