@@ -7,13 +7,18 @@ let oldLabel, oldColor;
 let inputRxnName, inputRxnLabel, hoveredNodeID, subcyHoveredNodeID;
 
 // Retrieve array of reaction names and create dropdown list
-let n = 0;
-for (node of data['nodes']) {
-  // fill in missing reaction name values with reaction ID
-  if (node['data']['rxnName'] === " ") {
-    data['nodes'][n]['data']['rxnName'] = node['data']['label'];
+function fillMissingReactionNames() {
+  for(let n=0; n < data['nodes'].length; n++) {
+    if (data['nodes'][n]['data']['rxnName'] === " ") {
+      data['nodes'][n]['data']['rxnName'] = data['nodes'][n]['data']['label'];
+    }
   }
-  n++;
+}
+
+fillMissingReactionNames();
+
+for (node of data['nodes']) {
+
   inputRxnName = node['data']['rxnName'];
   inputRxnLabel = node['data']['label'];
   rxnNameLabels.push(inputRxnName);
@@ -48,31 +53,32 @@ let subcy = cytoscape({
 
 // Initialize graph
 function initializeGraph(selectedNodeID) {
+
   selectNodes(cy, selectedNodeID);
   cy.layout(options).run();
   plotSubGraph(cy, subcy, selectedNodeID);
   plotPieChart(selectedNodeID);
   document.getElementById("subcy").style.display = "none";
   document.getElementById("pieChartContainer").style.display = "none";
+
+  // Modify the position of some nodes a little bit
+  xposGLYCDx = cy.$('#GLYCDx').renderedPosition('x');
+  yposGLYCDx = cy.$('#GLYCDx').renderedPosition('y');
+  xposGLYK = cy.$('#GLYK').renderedPosition('x');
+  yposGLYK = cy.$('#GLYK').renderedPosition('y');
+  cy.$('#GLYCDx').renderedPosition('x', (1 - 0.5) * xposGLYCDx);
+  cy.$('#GLYCDx').renderedPosition('y', (1 + 0.1) * yposGLYCDx);
+  cy.$('#GLYK').renderedPosition('x', (1 + 0.45) * xposGLYK);
+  cy.$('#GLYK').renderedPosition('y', (1 + 0.09) * yposGLYK);
+  xposATPS4rpp = cy.$('#ATPS4rpp').renderedPosition('x');
+  cy.$('#ATPS4rpp').renderedPosition('x', xposATPS4rpp - 50);
+  xposACONTa = cy.$('#ACONTa').renderedPosition('x');
+  cy.$('#ACONTa').renderedPosition('x', xposACONTa + 25);
+  xposACONTb = cy.$('#ACONTb').renderedPosition('x');
+  cy.$('#ACONTb').renderedPosition('x', xposACONTb + 50);
 }
 
 initializeGraph(selectedNodeID);
-
-// Modify the position of some nodes a little bit
-xposGLYCDx = cy.$('#GLYCDx').renderedPosition('x');
-yposGLYCDx = cy.$('#GLYCDx').renderedPosition('y');
-xposGLYK = cy.$('#GLYK').renderedPosition('x');
-yposGLYK = cy.$('#GLYK').renderedPosition('y');
-cy.$('#GLYCDx').renderedPosition('x', (1 - 0.5) * xposGLYCDx);
-cy.$('#GLYCDx').renderedPosition('y', (1 + 0.1) * yposGLYCDx);
-cy.$('#GLYK').renderedPosition('x', (1 + 0.45) * xposGLYK);
-cy.$('#GLYK').renderedPosition('y', (1 + 0.09) * yposGLYK);
-xposATPS4rpp = cy.$('#ATPS4rpp').renderedPosition('x');
-cy.$('#ATPS4rpp').renderedPosition('x', xposATPS4rpp - 50);
-xposACONTa = cy.$('#ACONTa').renderedPosition('x');
-cy.$('#ACONTa').renderedPosition('x', xposACONTa + 25);
-xposACONTb = cy.$('#ACONTb').renderedPosition('x');
-cy.$('#ACONTb').renderedPosition('x', xposACONTb + 50);
 
 // Interactive block
 cy.on('mouseover', 'node', function(event) {
