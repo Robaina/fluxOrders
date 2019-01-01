@@ -1,6 +1,5 @@
 body {
   min-height: 100%;
-  /* margin: 10px; */
   padding: 0px;
   background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134));
 }
@@ -20,46 +19,49 @@ p {
 
 footer {
   position: absolute;
-  top: 88%;
-  left: 2%;
+  top: 90vh;
+  left: 3%;
   font-size: 2vh;
 }
 
 form {
   position: absolute;
-  top: 13%;
-  left: 29%;
+  top: 10vh;
+  left: 45vw;
   z-index: 2;
 }
 
+#form-reaction {
+  font-size: 2vw;
+  text-align: center;
+}
+
 #select-list {
-  font-size: 1.2vw;
+  font-size: 1.4vw;
   text-align-last: center;
 }
 
-#cy {
-  width: 90%;
-  height: 100%;
+.graph {
+  width: 95vw;
+  height: 70vh;
   position: absolute;
-  margin-left: 5%;
-  margin-right: 5%;
+  left: calc( (100vw - 95vw) / 2 );
   padding: 0%;
-  top: 0%;
-  left: 0%;
-  right: 0%;
+  top: 27vh;
   z-index: 0;
 }
 
-#pieChartContainer {
+#plotContainer {
   position: absolute;
-  top: 23%;
-  left: 2%;
-  height: 60%;
-  width: 40%;
-  z-index: 1;
+  cursor: move;
+  top: 7vh;
+  left: 0vw;
+  height: 60vh;
+  width: 45vw;
+  z-index: 2;
 }
 
-#pieChart {
+#barChart {
   position: relative;
   overflow: hidden;
   left: 0%;
@@ -71,44 +73,4 @@ form {
   text-align: center;
   top: 10%;
   font-size: 2vw;
-}
-
-#subcy {
-  position: absolute;
-  width: 58vw;
-  height: 80vh;
-  border: 0%;
-  padding: 0%;
-  top: 12%;
-  left: 40vw;
-  right: 0%;
-  z-index: 0;
-  /* background-color: rgba(185, 185, 185, 0.5) */
-}
-
-.button {
-  position: absolute;
-  top: 5%;
-  left: 3%;
-  padding: 1vmax;
-  font-size: 2.5vmax;
-  width: 14vmax;
-  background-color: rgb(12, 165, 170);
-  border: none;
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  margin: 1em 0em;
-  cursor: pointer;
-  border-radius: 1vmax;
-  user-select: none;
-  outline: none;
-  box-shadow: 0 0.5vmax rgb(221, 221, 221);
-  position: absolute;
-  z-index: 1;
-}
-.button:active {
-  box-shadow: 0 0.3vmax rgb(102, 102, 102);
-  transform: translateY(4px);
 }

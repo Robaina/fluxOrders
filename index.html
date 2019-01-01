@@ -10,19 +10,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Flux Orders</title>
   <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.ico">
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.2.16/cytoscape.js"></script>
-    <script src="https://unpkg.com/dagre@0.7.4/dist/dagre.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/cytoscape-dagre@2.2.1/cytoscape-dagre.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script> -->
+
   <script src="libs/cytoscape.js"></script>
   <script src="libs/dagre.js"></script>
   <script src="libs/cytoscape-dagre.js"></script>
   <script src="libs/jquery-3.3.1.min.js"></script>
   <script src="libs/plotly-latest.min.js"></script>
-  <!-- <script async="" src="https://cdn.rawgit.com/eligrey/FileSaver.js/5ed507ef8aa53d8ecfea96d96bc7214cd2476fd2/FileSaver.min.js"/> -->
-
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=default" async></script> -->
   <link rel="stylesheet" href="styles.css">
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -40,25 +33,18 @@
 <body>
 
   <h1 style="text-align: center;">Flux order relations of <em>Escherichia coli</em></h1>
-  <!-- <p style="text-align:justify;">A metabolic network operating at steady-state satisfies the constraints:
-  $$Sv=0$$
-  </p> -->
   <form id="reaction-form">
+    <p id="form-reaction">Current reaction: </p>
     <select name="reactions" id="select-list" onchange="changeSelectedReaction()">
     </select>
-    <!-- <input type="submit" id="reaction-input" value="Submit"> -->
   </form>
 
-  <div id="cy"></div>
+  <div class="graph" id="cy"></div>
 
-  <button class="button" id="subgraphButton" onclick="showSubGraph()" ontouch="showSubGraph()">SubGraph</button>
-
-  <div id="pieChartContainer">
-    <p id="reaction"></p>
-    <div id="pieChart"></div>
+  <div id="plotContainer">
+    <!-- <p id="reaction"></p> -->
+    <div id="barChart"></div>
   </div>
-
-  <!-- <div id="subcy"></div> -->
 
   <footer>
     <p>Semidán Robaina Estévez, 2018</p>
@@ -69,6 +55,7 @@
   <script src="data/subGraphLayoutOptions.js"></script>
   <script src="data/graphData.js"></script>
   <script src="data/graphStyle.js"></script>
+  <script src="data/barPlot.js"></script>
   <script src="sketch.js"></script>
 
   <a href="https://www.github.com/Robaina/fluxOrders" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;"
