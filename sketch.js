@@ -8,14 +8,23 @@ let inputRxnName, inputRxnLabel, hoveredNodeID, subcyHoveredNodeID;
 
 // Retrieve array of reaction names and create dropdown list
 function fillMissingReactionNames() {
-  for(let n=0; n < data['nodes'].length; n++) {
+  for (let n=0; n < data['nodes'].length; n++) {
     if (data['nodes'][n]['data']['rxnName'] === " ") {
       data['nodes'][n]['data']['rxnName'] = data['nodes'][n]['data']['label'];
     }
   }
 }
 
+function fillMissingSubSystems() {
+  for (let n=0; n < data['nodes'].length; n++) {
+    if (data['nodes'][n]['data']['subsystem'] === " ") {
+      data['nodes'][n]['data']['subsystem'] = "Other";
+    }
+  }
+}
+
 fillMissingReactionNames();
+fillMissingSubSystems();
 
 for (node of data['nodes']) {
 
@@ -46,19 +55,19 @@ let cy = cytoscape({
   style: graphStyle,
 });
 
-let subcy = cytoscape({
-  container: document.getElementById('subcy'),
-  style: graphStyle,
-});
+// let subcy = cytoscape({
+//   container: document.getElementById('subcy'),
+//   style: graphStyle,
+// });
 
 // Initialize graph
 function initializeGraph(selectedNodeID) {
 
   selectNodes(cy, selectedNodeID);
   cy.layout(options).run();
-  plotSubGraph(cy, subcy, selectedNodeID);
+  // plotSubGraph(cy, subcy, selectedNodeID);
   plotPieChart(selectedNodeID);
-  document.getElementById("subcy").style.display = "none";
+  // document.getElementById("subcy").style.display = "none";
   document.getElementById("pieChartContainer").style.display = "none";
 
   // Modify the position of some nodes a little bit
@@ -86,28 +95,30 @@ cy.on('mouseover', 'node', function(event) {
   if (hoveredNodeID !== selectedNodeID) {
     cy.$(hoveredNodeID).addClass('selectedNode');
   }
+  cy.$(hoveredNodeID).addClass('selectedSubGraphNode');
 });
 cy.on('mouseout', 'node', function(event) {
   if (hoveredNodeID !== selectedNodeID) {
     cy.$(hoveredNodeID).removeClass('selectedNode');
   }
+  cy.$(hoveredNodeID).removeClass('selectedSubGraphNode');
 });
 
 cy.on('click tap', 'node', function(event) {
   selectedNodeID = '#' + this.id();
   document.getElementById(this.id()).selected = "selected";
   selectNodes(cy, selectedNodeID);
-  plotSubGraph(cy, subcy, selectedNodeID);
+  // plotSubGraph(cy, subcy, selectedNodeID);
   plotPieChart(selectedNodeID);
 });
 
-subcy.on('mouseover', 'node', function(event) {
-  subcyHoveredNodeID = '#' + this.id();
-  subcy.$(subcyHoveredNodeID).addClass('selectedSubGraphNode');
-});
-subcy.on('mouseout', 'node', function(event) {
-  subcy.$(subcyHoveredNodeID).removeClass('selectedSubGraphNode');
-});
+// subcy.on('mouseover', 'node', function(event) {
+//   subcyHoveredNodeID = '#' + this.id();
+//   subcy.$(subcyHoveredNodeID).addClass('selectedSubGraphNode');
+// });
+// subcy.on('mouseout', 'node', function(event) {
+//   subcy.$(subcyHoveredNodeID).removeClass('selectedSubGraphNode');
+// });
 
 // Helper functions
 function showSubGraph() {
@@ -115,13 +126,13 @@ function showSubGraph() {
   if (buttonPressed) {
     document.getElementById("cy").style.display = "none";
     document.getElementById("reaction-form").style.display = "none";
-    document.getElementById("subcy").style.display = "initial";
+//     document.getElementById("subcy").style.display = "initial";
     document.getElementById("pieChartContainer").style.display = "initial";
     document.getElementById("subgraphButton").innerHTML = "FullGraph";
   } else {
     document.getElementById("cy").style.display = "initial";
     document.getElementById("reaction-form").style.display = "initial";
-    document.getElementById("subcy").style.display = "none";
+//     document.getElementById("subcy").style.display = "none";
     document.getElementById("pieChartContainer").style.display = "none";
     document.getElementById("subgraphButton").innerHTML = "SubGraph";
   }
@@ -145,19 +156,19 @@ function selectNodes(cy, selectedNodeID) {
 
 };
 
-function plotSubGraph(cy, subcy, selectedNodeID) {
-  subcy.elements().remove();
-  for (element of [cy.$(selectedNodeID), childrenNodes, parentNodes, childrenEdges, parentEdges]) {
-    subcy.add(element.jsons());
-  }
-  let eles = cy.elements();
-  subcy.fit(eles);
-  // subcy.center(eles);
-  // subcy.reset();
-  subcy.fit(eles);
-  subcy.$('node').css('font-size', 175);
-  subcy.layout(subGraphOptions).run();
-};
+// function plotSubGraph(cy, subcy, selectedNodeID) {
+//   subcy.elements().remove();
+//   for (element of [cy.$(selectedNodeID), childrenNodes, parentNodes, childrenEdges, parentEdges]) {
+//     subcy.add(element.jsons());
+//   }
+//   let eles = cy.elements();
+//   subcy.fit(eles);
+//   // subcy.center(eles);
+//   // subcy.reset();
+//   subcy.fit(eles);
+//   subcy.$('node').css('font-size', 175);
+//   subcy.layout(subGraphOptions).run();
+// };
 
 function plotPieChart(selectedNodeID) {
 
@@ -202,12 +213,12 @@ function plotPieChart(selectedNodeID) {
 
   let childrenPieTitle, parentPieTitle;
   if (Object.keys(childrenSubsystems).length > 0) {
-    childrenPieTitle = 'Chidren';
+    childrenPieTitle = 'Chidrens';
   } else {
     childrenPieTitle = '';
   }
   if (Object.keys(parentSubsystems).length > 0) {
-    parentPieTitle = 'Parent';
+    parentPieTitle = 'Parents';
   } else {
     parentPieTitle = '';
   }
@@ -225,9 +236,9 @@ function plotPieChart(selectedNodeID) {
           pad: 0
         },
         showarrow: false,
-        text: childrenPieTitle,
-        x: 0.15,
-        y: 0.5
+        text: childrenPieTitle + " (" + childrenNodes.length.toString() + ")",
+        x: 0.17,
+        y: 0.9
       },
       {
         font: {
@@ -241,9 +252,11 @@ function plotPieChart(selectedNodeID) {
           pad: 0
         },
         showarrow: false,
-        text: parentPieTitle,
-        x: 0.83,
-        y: 0.5
+        text: parentPieTitle + " (" + parentNodes.length.toString() + ")",
+        // x: 0.83,
+        // y: 0.5
+        x: 0.87,
+        y: 0.9
       }
     ],
     height: window.innerWidth / 3,
@@ -269,7 +282,5 @@ function plotPieChart(selectedNodeID) {
 
   Plotly.newPlot('pieChart', pieData, pieLayout);
   document.getElementById('reaction').innerHTML = cy.$(selectedNodeID).data('rxnName');
-  // + ' ' + childrenNodes.length
-  // + ' ' + parentNodes.length;
 
 };

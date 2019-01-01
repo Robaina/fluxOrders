@@ -50,7 +50,7 @@ graphStyle = [
       'background-color': '#5a61c2',
       'text-background-color': '#ebebeb',
       'text-background-opacity': 0,
-      'font-size': 0,
+      'font-size': 300,
     }
   },
 
@@ -60,7 +60,7 @@ graphStyle = [
       'background-color': '#ed5e9c',
       'text-background-color': '#ebebeb',
       'text-background-opacity': 0,
-      'font-size': 0,
+      'font-size': 300,
     }
   },
 
