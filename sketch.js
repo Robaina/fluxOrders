@@ -1,4 +1,6 @@
-
+/* Flux order relation graph of Escherichia coli
+   Semidán Robaina Estévez, 2018
+*/
 let rxnNameLabels = rxnLabels = [];
 let option;
 let selectedNodeID = "#CS";
@@ -120,6 +122,16 @@ function selectNodes(cy, selectedNodeID) {
     cy.$(selectedNodeID).classes('selectedNode');
   });
 
-  cy.fit();
-
 };
+
+function showAbout() {
+  buttonPressed = !buttonPressed;
+  let button = document.getElementById("about-button");
+  let aboutContainer = document.getElementById("about");
+
+  if (buttonPressed) {
+    aboutContainer.style.right = "2vw";
+  } else {
+    aboutContainer.style.right = "-70vw";
+  }
+}

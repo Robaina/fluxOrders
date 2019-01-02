@@ -1,9 +1,11 @@
 body {
+  --orange-color: rgb(208, 165, 37);
+  --body-color: rgb(54, 54, 54);
   min-height: 100%;
   padding: 0px;
-  /* background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134)); */
-  background-color: rgb(54, 54, 54);
+  background-color: var(--body-color);
   color: rgb(182, 182, 182);
+  overflow: hidden;
 }
 
 html {
@@ -16,17 +18,18 @@ h1 {
 }
 
 p {
-  font-size: 1.1vw;
+  text-align: justify;
+  font-size: 1.2vw;
 }
 
 a {
   text-decoration: none;
-  color: rgb(208, 165, 37);
+  color: var(--orange-color);
 }
 
 footer {
   position: absolute;
-  top: 90vh;
+  top: 89vh;
   left: 3%;
   font-size: 2vh;
   z-index: 2;
@@ -34,26 +37,71 @@ footer {
 
 form {
   position: absolute;
-  top: 11vh;
-  left: 45vw;
+  top: 8.5vh;
+  left: 52vw;
   z-index: 2;
   color: inherit;
 }
 
 #form-reaction {
-  font-size: 1.4vw;
+  font-size: 1.8vw;
   text-align: center;
 }
 
 #select-list {
-  font-size: 1.2vw;
+  font-size: 1.8vw;
   text-align-last: center;
-  color: rgb(186, 153, 56);
-  background-color: rgb(54, 54, 54);
+  color: var(--orange-color);
+  background-color: var(--body-color);
+  max-width: 44vw;
+  height: 7vh;
 }
 
 select option {
-  background-color: rgb(54, 54, 54);
+  background-color: var(--body-color);
+  font-size: 1.2vw;
+}
+
+.about-container {
+  position: absolute;
+  top: 12.1vh;
+  right: -70vw;
+  width: 48vw;
+  height: 75vh;
+  background-color: var(--body-color);
+  border-radius: 5%;
+  border-radius: 25px;
+  border: 2px solid var(--orange-color);
+  padding: 20px;
+  z-index: 3;
+  overflow: hidden;
+  transition: 1.5s;
+}
+
+.button {
+  position: absolute;
+  top: -1vh;
+  left: 3.5vw;
+  padding: 1vmax;
+  font-size: 2.3vmax;
+  width: 10vmax;
+  background-color: var(--orange-color);
+  border: none;
+  color: var(--body-color);
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  margin: 1em 0em;
+  cursor: pointer;
+  border-radius: 1vmax;
+  user-select: none;
+  outline: none;
+  box-shadow: 0 0.5vmax rgb(221, 221, 221);
+  z-index: 2;
+}
+.button:active {
+  box-shadow: 0 0.3vmax rgb(102, 102, 102);
+  transform: translateY(4px);
 }
 
 .graph {
@@ -63,28 +111,28 @@ select option {
   left: calc( (100vw - 95vw) / 2 );
   padding: 0%;
   top: 20vh;
-  z-index: 1;
+  z-index: 0;
 }
 
 #plotContainer {
   position: absolute;
-  top: 0vh;
-  left: 0vw;
-  height: 60vh;
+  top: 10vh;
+  left: 4vw;
+  height: 38vh;
   width: 45vw;
-  z-index: 0;
+  z-index: 1;
 }
 
 #barChart {
   position: relative;
   overflow: hidden;
-  left: 0%;
-  top: 0%;
+  left: -5%;
+  top: -32%;
 }
 
-#reaction {
+#plot-title {
   position: relative;
   text-align: center;
-  top: 18%;
-  font-size: 1.4vw;
+  top: -5%;
+  font-size: 1.8vw;
 }

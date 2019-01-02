@@ -18,6 +18,7 @@ function plotChart(selectedNodeID) {
   let barData = [{
       y: Object.values(childrenSubsystems),
       x: Object.keys(childrenSubsystems),
+      width: 0.4,
       name: "Children",
       type: "bar",
       marker: {
@@ -27,6 +28,7 @@ function plotChart(selectedNodeID) {
     {
       y: Object.values(parentSubsystems),
       x: Object.keys(parentSubsystems),
+      width: 0.4,
       name: "Parent",
       type: "bar",
       marker: {
@@ -48,7 +50,6 @@ function plotChart(selectedNodeID) {
   }
   let fontColor = 'rgb(182, 182, 182)';
   let barLayout = {
-    // title: "Metabolic subsystems",
     font:{
       family: "Raleway, sans-serif",
       margin: 0,

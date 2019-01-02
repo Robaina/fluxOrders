@@ -18,13 +18,25 @@
   <script src="libs/plotly-latest.min.js"></script>
   <link rel="stylesheet" href="styles.css">
 
+  <!-- Sets $ as inline MathJax symbols -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+    });
+  </script>
+
+  <!-- Allows MathJax in the document: Note configuration changed to "SVG to avoid interference with plot.ly which renders in SVG"  TeX-MML-AM_CHTML TeX-AMS_SVG-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=default" async></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131412021-1"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'UA-131412021-1');
   </script>
 
@@ -42,8 +54,25 @@
   <div class="graph" id="cy"></div>
 
   <div id="plotContainer">
-    <p id="reaction">Metabolic subsystems</p>
+    <p id="plot-title">Metabolic subsystems</p>
     <div id="barChart"></div>
+  </div>
+
+  <button class="button" id="about-button" onclick="showAbout()">About</button>
+  <div class="about-container" id="about">
+    <h2 style="text-align: center;">The flux order relation</h2>
+
+      <p>The following <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph (DAG)</a> represents the <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partially ordered set</a> induced by the flux order relation in a core metabolic network of <i>Escherichia coli</i>. In other words, this is the <a href="https://en.wikipedia.org/wiki/Hasse_diagram">Hasse diagram</a> of the partially (flux) order set.</p>
+
+      <p>Two reactions $r_i, r_j$ are flux-ordered if their fluxes satisfy $$ v_i \geq v_j \; ∀ v : Sv = 0, v_{min} \leq v \leq v_{max} $$ where $S$ corresponds to the stoichiometric matrix of the metabolic network, $v$ a vector of flux values for every reaction in the system and $v_{min}, v_{max}$ corresponds to the boundary flux values of the system &mdash; a typical convention in <a href="https://en.wikipedia.org/wiki/Flux_balance_analysis">constraint-based metabolic modeling</a>. Hence, a flux-ordered reaction pair satisfies the order relation in any steady-state of the system.</p>
+
+      <p>In this graph, nodes are biochemical reactions while (directed) edges represent the flux order relation, <i>i.e.</i>, and edge $v_i → v_j$ implies $v_i \geq v_j$. The current selected node is green-colored and the name of the biochemical reaction depicted above the graph. All parent reactions of the selected node, <i>i.e.</i>, all reactions with an equal or greater flux value than the selected node, are colored in pink, while all children reactions, <i>i.e.</i>, all reactions with an equal or lower flux value, are colored in purple. The selected reaction can be changed by searching for the reaction name in the drop list or by directly clicking or touching a node. Mouse-hovering on nodes displays the full reaction name instead of the default reaction identifier. The graph admits zoom in, zoom out and drag events like any <a href="http://js.cytoscape.org/">Cytoscape.js</a> graph.</p>
+
+      <p>The bar plot represents the number of reactions per metabolic subsystem in the sets of parent and children reactions in the selected node. Reactions with a higher number of children reactions tend to be associated to critical subsystems such as ATP production or nutrient exchange.</p>
+
+      <p>This interactive graph is part of the publication <a href="#"><i>Flux-based hierarchical organization of </i>Escherichia coli<i>'s metabolic network</i></a> by Semidán Robaina-Estévez and Zoran Nikoloski.</p>
+
+    </p>
   </div>
 
   <footer>
