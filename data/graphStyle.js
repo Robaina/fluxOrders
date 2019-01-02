@@ -5,8 +5,8 @@ graphStyle = [
         'label': 'data(label)',
         'width': '200%',
         'height': '200%',
-        'color': 'black',
-        'background-color': '#737373',
+        'color': '#ba9938',
+        'background-color': '#9e9e9e',
         'font-size': 0,
         'text-halign': 'center'
     }
@@ -48,7 +48,7 @@ graphStyle = [
     selector: '.childrenNodes',
     style: {
       'background-color': '#5a61c2',
-      'text-background-color': '#ebebeb',
+      'text-background-color': '#363636',
       'text-background-opacity': 0,
       'font-size': 300,
     }
@@ -58,7 +58,7 @@ graphStyle = [
     selector: '.parentNodes',
     style: {
       'background-color': '#ed5e9c',
-      'text-background-color': '#ebebeb',
+      'text-background-color': '#363636',
       'text-background-opacity': 0,
       'font-size': 300,
     }
@@ -78,7 +78,7 @@ graphStyle = [
     style: {
       'label': 'data(rxnName)',
       'background-color': '#17cfad',
-      'text-background-color': '#ebebeb',
+      'text-background-color': '#363636',
       'text-background-opacity': 1,
       'z-index': 1,
       'font-size': 350,

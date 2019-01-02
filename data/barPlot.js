@@ -46,22 +46,25 @@ function plotChart(selectedNodeID) {
   } else {
     parentbarTitle = '';
   }
-
+  let fontColor = 'rgb(182, 182, 182)';
   let barLayout = {
-    title: "Metabolic subsystems in the subgraph",
+    // title: "Metabolic subsystems",
     font:{
-      family: "Raleway, sans-serif"
+      family: "Raleway, sans-serif",
+      margin: 0,
+      color: fontColor
     },
-    height: window.innerWidth / 3.2,
+    height: window.innerWidth / 3.4,
     width: window.innerWidth / 2.1,
     paper_bgcolor: "rgba(195, 195, 195, 0)",
-    plot_bgcolor: "rgba(195, 195, 195, 0.34)",
+    plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
     xaxis: {
       tickangle: 30,
       automargin: true,
       tickfont: {
-        size: 14
+        size: 14,
+        color: fontColor
       },
     },
     yaxis: {
@@ -71,7 +74,7 @@ function plotChart(selectedNodeID) {
       title: 'number of reactions',
       titlefont: {
         size: 16,
-        color: 'rgb(85, 85, 85)'
+        color: fontColor
       }
     },
     legend: {

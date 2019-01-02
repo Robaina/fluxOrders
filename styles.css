@@ -1,7 +1,9 @@
 body {
   min-height: 100%;
   padding: 0px;
-  background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134));
+  /* background: linear-gradient(180deg, rgb(238, 146, 106), rgb(244, 219, 144), rgb(188, 242, 134)); */
+  background-color: rgb(54, 54, 54);
+  color: rgb(182, 182, 182);
 }
 
 html {
@@ -17,18 +19,25 @@ p {
   font-size: 1.1vw;
 }
 
+a {
+  text-decoration: none;
+  color: rgb(208, 165, 37);
+}
+
 footer {
   position: absolute;
   top: 90vh;
   left: 3%;
   font-size: 2vh;
+  z-index: 2;
 }
 
 form {
   position: absolute;
-  top: 9vh;
+  top: 11vh;
   left: 45vw;
   z-index: 2;
+  color: inherit;
 }
 
 #form-reaction {
@@ -39,6 +48,12 @@ form {
 #select-list {
   font-size: 1.2vw;
   text-align-last: center;
+  color: rgb(186, 153, 56);
+  background-color: rgb(54, 54, 54);
+}
+
+select option {
+  background-color: rgb(54, 54, 54);
 }
 
 .graph {
@@ -53,8 +68,7 @@ form {
 
 #plotContainer {
   position: absolute;
-  /* cursor: ; */
-  top: 6vh;
+  top: 0vh;
   left: 0vw;
   height: 60vh;
   width: 45vw;
@@ -71,6 +85,6 @@ form {
 #reaction {
   position: relative;
   text-align: center;
-  top: 10%;
-  font-size: 2vw;
+  top: 18%;
+  font-size: 1.4vw;
 }
