@@ -55,16 +55,18 @@ function plotChart(selectedNodeID) {
       margin: 0,
       color: fontColor
     },
-    height: window.innerWidth / 3.4,
-    width: window.innerWidth / 2.1,
+    height: window.innerHeight / 2.1,
+    width: window.innerWidth / 1.9,
     paper_bgcolor: "rgba(195, 195, 195, 0)",
     plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
     xaxis: {
       tickangle: 30,
+      autotick: false,
+      tickwidth: 2,
       automargin: true,
       tickfont: {
-        size: 14,
+        size: 11,
         color: fontColor
       },
     },
@@ -74,12 +76,12 @@ function plotChart(selectedNodeID) {
       },
       title: 'number of reactions',
       titlefont: {
-        size: 16,
+        size: 14,
         color: fontColor
       }
     },
     legend: {
-      x: 0.8
+      x: 0.6
     }
 
   };
