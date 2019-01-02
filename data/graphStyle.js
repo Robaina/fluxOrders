@@ -27,7 +27,7 @@ graphStyle = [
   {
     selector: '.childrenEdges',
     style: {
-        'width': '25%',
+        'width': '35%',
         'line-color': '#5a61c2',
         'target-arrow-color': '#5a61c2',
         'arrow-scale': 3
@@ -37,7 +37,7 @@ graphStyle = [
   {
     selector: '.parentEdges',
     style: {
-        'width': '25%',
+        'width': '35%',
         'line-color': '#ed5e9c',
         'target-arrow-color': '#ed5e9c',
         'arrow-scale': 3

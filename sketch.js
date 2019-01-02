@@ -69,9 +69,9 @@ function initializeGraph(selectedNodeID) {
   xposGLYK = cy.$('#GLYK').renderedPosition('x');
   yposGLYK = cy.$('#GLYK').renderedPosition('y');
   cy.$('#GLYCDx').renderedPosition('x', (1 - 0.5) * xposGLYCDx);
-  cy.$('#GLYCDx').renderedPosition('y', (1 + 0.1) * yposGLYCDx);
+  cy.$('#GLYCDx').renderedPosition('y', (1 + 0.08) * yposGLYCDx);
   cy.$('#GLYK').renderedPosition('x', (1 + 0.45) * xposGLYK);
-  cy.$('#GLYK').renderedPosition('y', (1 + 0.09) * yposGLYK);
+  cy.$('#GLYK').renderedPosition('y', (1 + 0.08) * yposGLYK);
   xposATPS4rpp = cy.$('#ATPS4rpp').renderedPosition('x');
   cy.$('#ATPS4rpp').renderedPosition('x', xposATPS4rpp - 50);
   xposACONTa = cy.$('#ACONTa').renderedPosition('x');
@@ -119,5 +119,7 @@ function selectNodes(cy, selectedNodeID) {
     parentEdges.classes('parentEdges');
     cy.$(selectedNodeID).classes('selectedNode');
   });
+
+  cy.fit();
 
 };

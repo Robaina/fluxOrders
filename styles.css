@@ -26,39 +26,39 @@ footer {
 
 form {
   position: absolute;
-  top: 10vh;
+  top: 9vh;
   left: 45vw;
   z-index: 2;
 }
 
 #form-reaction {
-  font-size: 2vw;
+  font-size: 1.4vw;
   text-align: center;
 }
 
 #select-list {
-  font-size: 1.4vw;
+  font-size: 1.2vw;
   text-align-last: center;
 }
 
 .graph {
   width: 95vw;
-  height: 70vh;
+  height: 80vh;
   position: absolute;
   left: calc( (100vw - 95vw) / 2 );
   padding: 0%;
-  top: 27vh;
-  z-index: 0;
+  top: 20vh;
+  z-index: 1;
 }
 
 #plotContainer {
   position: absolute;
-  cursor: move;
-  top: 7vh;
+  /* cursor: ; */
+  top: 6vh;
   left: 0vw;
   height: 60vh;
   width: 45vw;
-  z-index: 2;
+  z-index: 0;
 }
 
 #barChart {
