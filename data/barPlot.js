@@ -1,5 +1,9 @@
 function plotChart(selectedNodeID) {
 
+  let windowHeight = window.innerHeight;
+  let windowWidth = window.innerWidth;
+  let barChart = document.getElementById("barChart");
+
   let childrenSubsystems = {};
   childrenNodes.forEach(function(node) {
     let childrenSubsystem = node.data("subsystem");
@@ -49,42 +53,87 @@ function plotChart(selectedNodeID) {
     parentbarTitle = '';
   }
   let fontColor = 'rgb(182, 182, 182)';
+  let largeFontSize = 13;
+  let smallFontSize = 6;
+  let largeHeight = windowHeight / 2.1;
+  let smallHeight = windowHeight / 1.4;
+  let largeWidth = windowWidth / 2;
+  let smallWidth = windowWidth / 1.5;
+
   let barLayout = {
     font:{
       family: "Raleway, sans-serif",
       margin: 0,
       color: fontColor
     },
-    height: window.innerHeight / 2.1,
-    width: window.innerWidth / 1.9,
+    height: largeHeight,
+    width: undefined,
     paper_bgcolor: "rgba(195, 195, 195, 0)",
     plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
     xaxis: {
-      tickangle: 30,
+      tickangle: 50,
       autotick: false,
       tickwidth: 2,
       automargin: true,
       tickfont: {
-        size: 11,
+        size: undefined,
         color: fontColor
       },
     },
     yaxis: {
       tickfont: {
-        size: 14
+        size: undefined
       },
       title: 'number of reactions',
       titlefont: {
-        size: 14,
+        size: undefined,
         color: fontColor
       }
     },
     legend: {
-      x: 0.6
+      x: 0.6,
+      font: {
+        size: undefined
+      }
     }
 
   };
 
+  // Workaround to kinda allow responsive font size in plot.ly
+  let isMobile = windowWidth < 800;
+  let isLandscape = windowWidth > windowHeight;
+  let isPortrait = windowWidth < windowHeight;
+
+  if (isMobile) {
+    barLayout.xaxis.tickfont.size = smallFontSize;
+    barLayout.yaxis.tickfont.size = smallFontSize;
+    barLayout.yaxis.titlefont.size = smallFontSize;
+    barLayout.legend.font.size = smallFontSize;
+    barLayout.width = smallWidth;
+    barLayout.height = smallHeight;
+
+    if (isLandscape) {
+      barChart.style.top = "-80%";
+      barChart.style.left = "-20%";
+    } else if (isPortrait) {
+      barChart.style.top = "-50%";
+      barChart.style.left = "-20%";
+      barLayout.height = smallHeight * 0.9;
+      // barLayout.width = smallWidth * 1.1;
+    }
+
+  } else {
+    barLayout.xaxis.tickfont.size = largeFontSize;
+    barLayout.yaxis.tickfont.size = largeFontSize;
+    barLayout.yaxis.titlefont.size = largeFontSize;
+    barLayout.legend.font.size = largeFontSize;
+    barLayout.width = largeWidth;
+    barLayout.height = largeHeight;
+    barChart.style.top = "-32%";
+    barChart.style.left = "-5%";
+  }
+
   Plotly.newPlot("barChart", barData, barLayout);
+
 };

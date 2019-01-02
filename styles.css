@@ -119,7 +119,7 @@ select option {
   top: 10vh;
   left: 4vw;
   height: 38vh;
-  width: 48vw;
+  width: 55vw;
   z-index: 1;
 }
 
@@ -132,7 +132,7 @@ select option {
 
 #plot-title {
   position: relative;
-  text-align: center;
+  left: 27%;
   top: -5%;
   font-size: 1.8vw;
 }
