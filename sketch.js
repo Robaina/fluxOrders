@@ -130,7 +130,7 @@ function showAbout() {
   let aboutContainer = document.getElementById("about");
 
   if (buttonPressed) {
-    aboutContainer.style.right = "2vw";
+    aboutContainer.style.right = "1vw";
   } else {
     aboutContainer.style.right = "-70vw";
   }
