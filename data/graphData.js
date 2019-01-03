@@ -3,8 +3,8 @@ data = {
           "data": {
             "id": "Growth",
             "label": "Growth",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Biomass reaction",
+            "subsystem": "Biomass and maintenance"
           }
         }, {
           "data": {
@@ -24,8 +24,8 @@ data = {
           "data": {
             "id": "SuccEx",
             "label": "SuccEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Succinate exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -38,22 +38,22 @@ data = {
           "data": {
             "id": "EthEx",
             "label": "EthEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Ethanol exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "ACALD_reverse",
             "label": "ACALD_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Acetaldehyde dehydrogenase (acetylating)_reverse",
+            "subsystem": "Pyruvate Metabolism"
           }
         }, {
           "data": {
             "id": "AcEx",
             "label": "AcEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Acetate exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -94,8 +94,8 @@ data = {
           "data": {
             "id": "FormEx",
             "label": "FormEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Formate exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -108,8 +108,8 @@ data = {
           "data": {
             "id": "h2Ex",
             "label": "h2Ex",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Molecular hydrogen exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -122,8 +122,8 @@ data = {
           "data": {
             "id": "LacEx",
             "label": "LacEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Lactate exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -157,8 +157,8 @@ data = {
           "data": {
             "id": "ACONTa_reverse",
             "label": "ACONTa_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Aconitase (half-reaction A, Citrate hydro-lyase)_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
@@ -171,15 +171,15 @@ data = {
           "data": {
             "id": "ACONTb_reverse",
             "label": "ACONTb_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Aconitase (half-reaction B, Isocitrate hydro-lyase)_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
             "id": "AcUp",
             "label": "AcUp",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Acetate uptake",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -199,8 +199,8 @@ data = {
           "data": {
             "id": "ADK1_reverse",
             "label": "ADK1_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Adenylate kinase_reverse",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -213,8 +213,8 @@ data = {
           "data": {
             "id": "ALCD2x_reverse",
             "label": "ALCD2x_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Alcohol dehydrogenase (ethanol)_reverse",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -234,15 +234,15 @@ data = {
           "data": {
             "id": "CO2Ex",
             "label": "CO2Ex",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "CO2 exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "CO2Up",
             "label": "CO2Up",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "CO2 uptake",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -297,8 +297,8 @@ data = {
           "data": {
             "id": "GlcUp",
             "label": "GlcUp",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Glucose uptake",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -402,8 +402,8 @@ data = {
           "data": {
             "id": "ATPS4rpp_reverse",
             "label": "ATPS4rpp_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "ATP synthase (four protons for one ATP) (periplasm)_reverse",
+            "subsystem": "Oxidative Phosphorylation"
           }
         }, {
           "data": {
@@ -416,8 +416,8 @@ data = {
           "data": {
             "id": "ENO_reverse",
             "label": "ENO_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Enolase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
@@ -451,8 +451,8 @@ data = {
           "data": {
             "id": "FUM_reverse",
             "label": "FUM_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Fumarase_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
@@ -472,8 +472,8 @@ data = {
           "data": {
             "id": "G6PDH2r_reverse",
             "label": "G6PDH2r_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Glucose 6-phosphate dehydrogenase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
@@ -486,36 +486,36 @@ data = {
           "data": {
             "id": "GAPD_reverse",
             "label": "GAPD_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Glyceraldehyde-3-phosphate dehydrogenase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
             "id": "h_pEx",
             "label": "h_pEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Proton exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "h_pEx_reverse",
             "label": "h_pEx_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Proton exchange_reverse",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "h2oEx",
             "label": "h2oEx",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Water exchange",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "h2oEx_reverse",
             "label": "h2oEx_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Water exchange_reverse",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -528,8 +528,8 @@ data = {
           "data": {
             "id": "ICDHyr_reverse",
             "label": "ICDHyr_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Isocitrate dehydrogenase (NADP)_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
@@ -563,15 +563,15 @@ data = {
           "data": {
             "id": "O2Up",
             "label": "O2Up",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Oxygen uptake",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
             "id": "O2Up_reverse",
             "label": "O2Up_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Oxygen uptake_reverse",
+            "subsystem": "Transport"
           }
         }, {
           "data": {
@@ -591,8 +591,8 @@ data = {
           "data": {
             "id": "PGK_reverse",
             "label": "PGK_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Phosphoglycerate kinase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
@@ -605,8 +605,8 @@ data = {
           "data": {
             "id": "PGM_reverse",
             "label": "PGM_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Phosphoglycerate mutase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
@@ -675,113 +675,113 @@ data = {
           "data": {
             "id": "ACKr_reverse",
             "label": "ACKr_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Acetate kinase_reverse",
+            "subsystem": "Pyruvate Metabolism"
           }
         }, {
           "data": {
             "id": "F6PA_reverse",
             "label": "F6PA_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Fructose 6-phosphate aldolase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
             "id": "FBA_reverse",
             "label": "FBA_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Fructose-bisphosphate aldolase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
             "id": "G3PD2_reverse",
             "label": "G3PD2_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Glycerol-3-phosphate dehydrogenase (NADP)_reverse",
+            "subsystem": "Alternate Carbon Metabolism"
           }
         }, {
           "data": {
             "id": "LDH_D_reverse",
             "label": "LDH_D_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "D-lactate dehydrogenase_reverse",
+            "subsystem": "Pyruvate Metabolism"
           }
         }, {
           "data": {
             "id": "MDH_reverse",
             "label": "MDH_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Malate dehydrogenase_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
             "id": "NADH16pp_reverse",
             "label": "NADH16pp_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "NADH dehydrogenase (ubiquinone-8 & 3 protons) (periplasm)_reverse",
+            "subsystem": "Oxidative Phosphorylation"
           }
         }, {
           "data": {
             "id": "PGI_reverse",
             "label": "PGI_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Glucose-6-phosphate isomerase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }, {
           "data": {
             "id": "PTAr_reverse",
             "label": "PTAr_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Phosphotransacetylase_reverse",
+            "subsystem": "Pyruvate Metabolism"
           }
         }, {
           "data": {
             "id": "RPE_reverse",
             "label": "RPE_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Ribulose 5-phosphate 3-epimerase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
             "id": "RPI_reverse",
             "label": "RPI_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Ribose-5-phosphate isomerase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
             "id": "SUCOAS_reverse",
             "label": "SUCOAS_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Succinyl-CoA synthetase (ADP-forming)_reverse",
+            "subsystem": "Citric Acid Cycle"
           }
         }, {
           "data": {
             "id": "TALA_reverse",
             "label": "TALA_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Transaldolase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
             "id": "TKT1_reverse",
             "label": "TKT1_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Transketolase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
             "id": "TKT2_reverse",
             "label": "TKT2_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Transketolase_reverse",
+            "subsystem": "Pentose Phosphate Pathway"
           }
         }, {
           "data": {
             "id": "TPI_reverse",
             "label": "TPI_reverse",
-            "rxnName": " ",
-            "subsystem": " "
+            "rxnName": "Triose-phosphate isomerase_reverse",
+            "subsystem": "Glycolysis/Gluconeogenesis"
           }
         }],
         "edges": [{
