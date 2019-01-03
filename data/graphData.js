@@ -25,7 +25,7 @@ data = {
             "id": "SuccEx",
             "label": "SuccEx",
             "rxnName": "Succinate exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -39,7 +39,7 @@ data = {
             "id": "EthEx",
             "label": "EthEx",
             "rxnName": "Ethanol exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -53,7 +53,7 @@ data = {
             "id": "AcEx",
             "label": "AcEx",
             "rxnName": "Acetate exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -95,7 +95,7 @@ data = {
             "id": "FormEx",
             "label": "FormEx",
             "rxnName": "Formate exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -109,7 +109,7 @@ data = {
             "id": "h2Ex",
             "label": "h2Ex",
             "rxnName": "Molecular hydrogen exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -123,7 +123,7 @@ data = {
             "id": "LacEx",
             "label": "LacEx",
             "rxnName": "Lactate exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -179,7 +179,7 @@ data = {
             "id": "AcUp",
             "label": "AcUp",
             "rxnName": "Acetate uptake",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -200,7 +200,7 @@ data = {
             "id": "ADK1_reverse",
             "label": "ADK1_reverse",
             "rxnName": "Adenylate kinase_reverse",
-            "subsystem": "Transport"
+            "subsystem": "Nucleotide Salvage Pathway"
           }
         }, {
           "data": {
@@ -214,7 +214,7 @@ data = {
             "id": "ALCD2x_reverse",
             "label": "ALCD2x_reverse",
             "rxnName": "Alcohol dehydrogenase (ethanol)_reverse",
-            "subsystem": "Transport"
+            "subsystem": "Pyruvate Metabolism"
           }
         }, {
           "data": {
@@ -235,14 +235,14 @@ data = {
             "id": "CO2Ex",
             "label": "CO2Ex",
             "rxnName": "CO2 exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
             "id": "CO2Up",
             "label": "CO2Up",
             "rxnName": "CO2 uptake",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -298,7 +298,7 @@ data = {
             "id": "GlcUp",
             "label": "GlcUp",
             "rxnName": "Glucose uptake",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -494,28 +494,28 @@ data = {
             "id": "h_pEx",
             "label": "h_pEx",
             "rxnName": "Proton exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
             "id": "h_pEx_reverse",
             "label": "h_pEx_reverse",
             "rxnName": "Proton exchange_reverse",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
             "id": "h2oEx",
             "label": "h2oEx",
             "rxnName": "Water exchange",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
             "id": "h2oEx_reverse",
             "label": "h2oEx_reverse",
             "rxnName": "Water exchange_reverse",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
@@ -564,14 +564,14 @@ data = {
             "id": "O2Up",
             "label": "O2Up",
             "rxnName": "Oxygen uptake",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
             "id": "O2Up_reverse",
             "label": "O2Up_reverse",
             "rxnName": "Oxygen uptake_reverse",
-            "subsystem": "Transport"
+            "subsystem": "Exchange"
           }
         }, {
           "data": {
