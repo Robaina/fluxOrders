@@ -130,8 +130,10 @@ function showAbout() {
   let aboutContainer = document.getElementById("about");
 
   if (buttonPressed) {
-    aboutContainer.style.right = "1vw";
+    aboutContainer.style.display = "initial";
+    setTimeout(() => aboutContainer.style.opacity = 1, 100);
   } else {
-    aboutContainer.style.right = "-70vw";
+    aboutContainer.style.opacity = 0;
+    setTimeout(() => aboutContainer.style.display = "none", 1500);
   }
 }

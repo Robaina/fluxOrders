@@ -55,7 +55,7 @@ function plotChart(selectedNodeID) {
   let fontColor = 'rgb(182, 182, 182)';
   let largeFontSize = 13;
   let smallFontSize = 6;
-  let largeHeight = windowHeight / 2.1;
+  let largeHeight = windowHeight / 2.5;
   let smallHeight = windowHeight / 1.4;
   let largeWidth = windowWidth / 2;
   let smallWidth = windowWidth / 1.5;
@@ -66,8 +66,9 @@ function plotChart(selectedNodeID) {
       margin: 0,
       color: fontColor
     },
+    // autosize: true,
     height: largeHeight,
-    width: undefined,
+    // width: undefined,
     paper_bgcolor: "rgba(195, 195, 195, 0)",
     plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
@@ -92,11 +93,17 @@ function plotChart(selectedNodeID) {
       }
     },
     legend: {
-      x: 0.6,
+      x: 0.8,
       font: {
         size: undefined
       }
-    }
+    },
+    margin: {
+      t: 0,
+      l: 30,
+      r: 80,
+      b: 0
+  }
 
   };
 
@@ -110,8 +117,9 @@ function plotChart(selectedNodeID) {
     barLayout.yaxis.tickfont.size = smallFontSize;
     barLayout.yaxis.titlefont.size = smallFontSize;
     barLayout.legend.font.size = smallFontSize;
-    barLayout.width = smallWidth;
-    barLayout.height = smallHeight;
+    barLayout.margin.r = 0;
+    // barLayout.width = smallWidth;
+    // barLayout.height = smallHeight;
 
     if (isLandscape) {
       barChart.style.top = "-80%";
@@ -119,8 +127,7 @@ function plotChart(selectedNodeID) {
     } else if (isPortrait) {
       barChart.style.top = "-50%";
       barChart.style.left = "-20%";
-      barLayout.height = smallHeight * 0.9;
-      // barLayout.width = smallWidth * 1.1;
+      // barLayout.height = smallHeight * 0.9;
     }
 
   } else {
@@ -128,12 +135,12 @@ function plotChart(selectedNodeID) {
     barLayout.yaxis.tickfont.size = largeFontSize;
     barLayout.yaxis.titlefont.size = largeFontSize;
     barLayout.legend.font.size = largeFontSize;
-    barLayout.width = largeWidth;
-    barLayout.height = largeHeight;
-    barChart.style.top = "-32%";
-    barChart.style.left = "-5%";
+    // barLayout.width = largeWidth;
+    // barLayout.height = largeHeight;
+    // barChart.style.top = "-32%";
+    // barChart.style.left = "-5%";
   }
 
-  Plotly.newPlot("barChart", barData, barLayout);
+  Plotly.newPlot("barChart", barData, barLayout, {responsive: true});
 
 };

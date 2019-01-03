@@ -5,7 +5,6 @@ body {
   padding: 0px;
   background-color: var(--body-color);
   color: rgb(182, 182, 182);
-  overflow: hidden;
 }
 
 html {
@@ -13,7 +12,7 @@ html {
 }
 
 h1 {
-  font-size: 2.5vw;
+  font-size: 2.4vmax;
   z-index: -1;
 }
 
@@ -37,7 +36,7 @@ footer {
 
 form {
   position: absolute;
-  top: 8.5vh;
+  top: 7.5vh;
   left: 52vw;
   z-index: 2;
   color: inherit;
@@ -65,17 +64,19 @@ select option {
 .about-container {
   position: absolute;
   top: 12.1vh;
-  right: -70vw;
+  right: 1vw;
   width: 48vw;
-  height: 75vh;
+  height: auto;
+  font-size: 1.6vw;
   background-color: var(--body-color);
   border-radius: 5%;
   border-radius: 25px;
   border: 2px solid var(--orange-color);
   padding: 20px;
   z-index: 3;
-  overflow: hidden;
-  transition: 1.5s;
+  opacity: 0;
+  transition: opacity 1.5s;
+  display: none;
 }
 
 .button {
@@ -116,23 +117,79 @@ select option {
 
 #plotContainer {
   position: absolute;
-  top: 10vh;
+  top: 7vh;
   left: 4vw;
-  height: 38vh;
-  width: 55vw;
+  height: 35vh;
+  width: 50vw;
   z-index: 1;
-}
-
-#barChart {
-  position: relative;
-  overflow: hidden;
-  left: -5%;
-  top: -32%;
 }
 
 #plot-title {
   position: relative;
-  left: 27%;
-  top: -5%;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 10%;
   font-size: 1.8vw;
+  text-align: center;
 }
+
+#plot-wrapper {
+  position: relative;
+  top: 0%;
+  width: 100%;
+  height: auto;
+  /* max-height: 100%; */
+}
+
+
+@media only screen and (max-width: 768px) {
+
+  .about-container {
+    top: 9vh;
+    width: 80vw;
+    right: 4vw;
+    display: inline-block;
+    opacity: 1;
+  }
+
+  form {
+    top: 49vh;
+    left: 27vw;
+  }
+
+  #form-reaction {
+    font-size: 3vw;
+  }
+
+  .graph {
+    top: 37vh;
+  }
+
+  #plotContainer {
+    width: 80vw;
+    height: 20vh;
+    top: 100vh;
+    margin: auto;
+    left: 10vw;
+  }
+
+  #plot-title {
+    font-size: 3vw;
+  }
+
+  .button {
+    display: none;
+  }
+
+  footer {
+    top: 150vh;
+  }
+
+  h1 {
+    margin-top: 2vh;
+  }
+
+  p {
+    font-size: 1.5vw;
+  }
