@@ -47,20 +47,6 @@
 <body id="container">
 
   <h1 style="text-align: center;">Flux order relations of <em>Escherichia coli</em></h1>
-  <form id="reaction-form">
-    <p id="form-reaction">Current reaction: </p>
-    <select name="reactions" id="select-list" onchange="changeSelectedReaction()">
-    </select>
-  </form>
-
-  <div class="graph" id="cy"></div>
-
-  <div id="plotContainer">
-    <p id="plot-title">Metabolic subsystems</p>
-    <div id="plot-wrapper">
-      <div id="barChart"></div>
-    </div>
-  </div>
 
   <button class="button" id="about-button" onclick="showAbout()">About</button>
   <div class="about-container" id="about">
@@ -77,6 +63,21 @@
       <p>This interactive graph is part of the publication <a href="#"><i>Flux-based hierarchical organization of </i>Escherichia coli<i>'s metabolic network</i></a> by Semidán Robaina-Estévez and Zoran Nikoloski.</p>
 
     </p>
+  </div>
+
+  <form id="reaction-form">
+    <p id="form-reaction">Current reaction: </p>
+    <select name="reactions" id="select-list" onchange="changeSelectedReaction()">
+    </select>
+  </form>
+
+  <div class="graph" id="cy"></div>
+
+  <div id="plotContainer">
+    <p id="plot-title">Metabolic subsystems</p>
+    <div id="plot-wrapper">
+      <div id="barChart"></div>
+    </div>
   </div>
 
   <footer>

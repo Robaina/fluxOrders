@@ -148,34 +148,41 @@ select option {
   .about-container {
     top: 9vh;
     width: 80vw;
-    right: 4vw;
     display: inline-block;
     opacity: 1;
+    position: static;
+    margin-left: 5vw;
+    margin-top: 5vmax;
+    margin-bottom: 5vmax;
   }
 
   form {
-    top: 49vh;
-    left: 27vw;
+    position: static;
+    margin-left: 25vw;
   }
 
   #form-reaction {
     font-size: 3vw;
+    position: relative;
+    left: -18%;
   }
 
   .graph {
-    top: 37vh;
+    position: static;
+    margin: 0;
   }
 
   #plotContainer {
     width: 80vw;
     height: 20vh;
-    top: 100vh;
     margin: auto;
-    left: 10vw;
+    position: static;
+    margin-top: 10vmin;
   }
 
   #plot-title {
     font-size: 3vw;
+    margin-bottom: 5%;
   }
 
   .button {
@@ -183,7 +190,8 @@ select option {
   }
 
   footer {
-    top: 150vh;
+    position: static;
+    margin-top: 30vmin;
   }
 
   h1 {
