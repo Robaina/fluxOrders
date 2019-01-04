@@ -4,7 +4,8 @@
 let rxnNameLabels = rxnLabels = [];
 let option;
 let selectedNodeID = "#GlcUp";
-let buttonPressed = false;
+let aboutButtonPressed = false;
+let button, selectedContainer, buttonPressed;
 let oldLabel, oldColor;
 let inputRxnName, inputRxnLabel, hoveredNodeID, subcyHoveredNodeID;
 let graphContainer = document.getElementById("cy");
@@ -124,16 +125,52 @@ function selectNodes(cy, selectedNodeID) {
 
 };
 
-function showAbout() {
-  buttonPressed = !buttonPressed;
-  let button = document.getElementById("about-button");
-  let aboutContainer = document.getElementById("about");
+function showContainer(selectedContainer) {
 
-  if (buttonPressed) {
-    aboutContainer.style.display = "initial";
-    setTimeout(() => aboutContainer.style.opacity = 1, 100);
-  } else {
-    aboutContainer.style.opacity = 0;
-    setTimeout(() => aboutContainer.style.display = "none", 1500);
+  let containers = document.getElementsByClassName("container");
+  for (let i=0; i<containers.length; i++) {
+    containers[i].style.display = "none";
+    // containers[i].style.visibility = "hidden";
   }
+  selectedContainer.style.display = "initial";
+  // selectedContainer.style.visibility = "visible";
+  // setTimeout(() => selectedContainer.style.opacity = 1, 100);
+}
+
+function showAbout() {
+  aboutButtonPressed = !aboutButtonPressed;
+  let container = document.getElementById("about-container");
+  document.getElementById("main-title").innerHTML = "The flux order relation";
+
+  if (window.innerWidth < 768) {
+      document.getElementById("reaction-form").style.display = "none";
+      showContainer(container);
+
+  } else {
+
+    if (aboutButtonPressed) {
+      container.style.display = "initial";
+      setTimeout(() => container.style.opacity = 1, 100);
+    } else {
+      container.style.opacity = 0;
+      setTimeout(() => container.style.display = "none", 1500);
+    }
+  }
+}
+
+// have to make the state of the remaining buttons false when another is push!
+
+function showPlot() {
+  let container = document.getElementById("plot-container");
+  document.getElementById("main-title").innerHTML = "Metabolic subsystems of the subgraph";
+  document.getElementById("reaction-form").style.display = "none";
+  showContainer(container);
+  plotChart(); //xtick labels lost if not replotted
+}
+
+function showGraph() {
+  let container = document.getElementById("graph-container");
+  document.getElementById("main-title").innerHTML = "Ordering of metabolic fluxes in <em>Escherichia coli</em>";
+  document.getElementById("reaction-form").style.display = "initial";
+  showContainer(container);
 }

@@ -44,12 +44,18 @@
 
 </head>
 
-<body id="container">
+<body>
 
-  <h1 style="text-align: center;">Flux order relations of <em>Escherichia coli</em></h1>
+  <div class="navbar">
+    <div class="button-container">
+      <button class="button" id="graph-button" onclick="showGraph()" autofocus>Graph</button>
+      <button class="button" id="plot-button" onclick="showPlot()">Plot</button>
+      <button class="button" id="about-button" onclick="showAbout()">About</button>
+    </div>
+    <h1 style="text-align: center;" id="main-title">Ordering of metabolic fluxes in <em>Escherichia coli</em></h1>
+  </div>
 
-  <button class="button" id="about-button" onclick="showAbout()">About</button>
-  <div class="about-container" id="about">
+  <div class="container" id="about-container">
     <h2 style="text-align: center;">The flux order relation</h2>
 
       <p>The following <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph (DAG)</a> represents the <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partially ordered set</a> induced by the flux order relation in <a href="https://www.nature.com/articles/srep39647">EColiCore2</a> a core metabolic network of the bacterium <i>Escherichia coli</i>. In other words, this is the <a href="https://en.wikipedia.org/wiki/Hasse_diagram">Hasse diagram</a> of the partially (flux) ordered set.</p>
@@ -62,6 +68,9 @@
 
       <p>This interactive graph is part of the publication <a href="#"><i>Flux-based hierarchical organization of </i>Escherichia coli<i>'s metabolic network</i></a> by Semidán Robaina-Estévez and Zoran Nikoloski.</p>
 
+      <p><a href="https://www.github.com/Robaina" id="me">Semidán Robaina Estévez</a>, 2018</p>
+      <p>Using <a href="http://js.cytoscape.org/">Cytoscape.js</a>, <a href="https://plot.ly/javascript">Plotly.js</a>, <a href="https://github.com/dagrejs/dagre">Dagre.js</a> and <a href="https://github.hubspot.com/pace/docs/welcome">Pace.js.</a></p>
+
     </p>
   </div>
 
@@ -71,9 +80,11 @@
     </select>
   </form>
 
+<div class="container" id="graph-container">
   <div class="graph" id="cy"></div>
+</div>
 
-  <div id="plotContainer">
+  <div class="container "id="plot-container">
     <p id="plot-title">Metabolic subsystems</p>
     <div id="plot-wrapper">
       <div id="barChart"></div>
@@ -81,7 +92,7 @@
   </div>
 
   <footer>
-    <p>Semidán Robaina Estévez, 2018</p>
+    <p><a href="https://www.github.com/Robaina" id="me">Semidán Robaina Estévez</a>, 2018</p>
     <p>Using <a href="http://js.cytoscape.org/">Cytoscape.js</a>, <a href="https://plot.ly/javascript">Plotly.js</a>, <a href="https://github.com/dagrejs/dagre">Dagre.js</a> and <a href="https://github.hubspot.com/pace/docs/welcome">Pace.js.</a></p>
   </footer>
 

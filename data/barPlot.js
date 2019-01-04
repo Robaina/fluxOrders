@@ -54,9 +54,9 @@ function plotChart(selectedNodeID) {
   }
   let fontColor = 'rgb(182, 182, 182)';
   let largeFontSize = 13;
-  let smallFontSize = 6;
+  let smallFontSize = 8;
   let largeHeight = windowHeight / 2.5;
-  let smallHeight = windowHeight / 1.4;
+  let smallHeight = windowHeight / 1.8;
   let largeWidth = windowWidth / 2;
   let smallWidth = windowWidth / 1.5;
 
@@ -73,6 +73,7 @@ function plotChart(selectedNodeID) {
     plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
     xaxis: {
+      ticks: "inside",
       tickangle: 45,
       autotick: false,
       tickwidth: 1,
@@ -115,21 +116,22 @@ function plotChart(selectedNodeID) {
 
   if (isMobile) {
     barLayout.xaxis.tickfont.size = smallFontSize;
+    barLayout.xaxis.tickangle = 75;
     barLayout.yaxis.tickfont.size = smallFontSize;
     barLayout.yaxis.titlefont.size = smallFontSize;
     barLayout.legend.font.size = smallFontSize;
     barLayout.margin.r = 0;
-    // barLayout.width = smallWidth;
-    // barLayout.height = smallHeight;
+    barLayout.width = smallWidth;
+    barLayout.height = smallHeight;
 
-    if (isLandscape) {
-      barChart.style.top = "-80%";
-      barChart.style.left = "-20%";
-    } else if (isPortrait) {
-      barChart.style.top = "-50%";
-      barChart.style.left = "-20%";
-      // barLayout.height = smallHeight * 0.9;
-    }
+    // if (isLandscape) {
+    //   barChart.style.top = "-80%";
+    //   barChart.style.left = "-20%";
+    // } else if (isPortrait) {
+    //   barChart.style.top = "-50%";
+    //   barChart.style.left = "-20%";
+    //   // barLayout.height = smallHeight * 0.9;
+    // }
 
   } else {
     barLayout.xaxis.tickfont.size = largeFontSize;
@@ -142,6 +144,6 @@ function plotChart(selectedNodeID) {
     // barChart.style.left = "-5%";
   }
 
-  Plotly.newPlot("barChart", barData, barLayout, {responsive: true});
+  Plotly.newPlot("barChart", barData, barLayout);//, {responsive: true});
 
 };
