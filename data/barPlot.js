@@ -73,9 +73,9 @@ function plotChart(selectedNodeID) {
     plot_bgcolor: "rgba(78, 78, 78, 0.34)",
 
     xaxis: {
-      tickangle: 50,
+      tickangle: 45,
       autotick: false,
-      tickwidth: 2,
+      tickwidth: 1,
       automargin: true,
       tickfont: {
         size: undefined,
@@ -94,6 +94,7 @@ function plotChart(selectedNodeID) {
     },
     legend: {
       x: 0.8,
+      y: 0.92,
       font: {
         size: undefined
       }

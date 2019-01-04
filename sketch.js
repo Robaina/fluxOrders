@@ -3,7 +3,7 @@
 */
 let rxnNameLabels = rxnLabels = [];
 let option;
-let selectedNodeID = "#CS";
+let selectedNodeID = "#GlcUp";
 let buttonPressed = false;
 let oldLabel, oldColor;
 let inputRxnName, inputRxnLabel, hoveredNodeID, subcyHoveredNodeID;
