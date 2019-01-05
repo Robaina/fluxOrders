@@ -156,7 +156,7 @@ select option {
     display: inline-block;
     position: absolute;
     margin-top: 5vmax;
-    margin-left: 5vmax;
+    margin-left: 7vmax;
     margin-right: 5vmax;
     padding: 0;
     border: 0;
@@ -199,8 +199,8 @@ select option {
 
   #plot-container {
     position: absolute;
-    top: 25vmin;
-    left: 8vmax;
+    top: 28vmin;
+    left: 10vmax;
     height: 70vmin;
     width: 100vmax;
     display: none;

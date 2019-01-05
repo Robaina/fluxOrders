@@ -130,11 +130,22 @@ function showContainer(selectedContainer) {
   let containers = document.getElementsByClassName("container");
   for (let i=0; i<containers.length; i++) {
     containers[i].style.display = "none";
-    // containers[i].style.visibility = "hidden";
   }
   selectedContainer.style.display = "initial";
-  // selectedContainer.style.visibility = "visible";
-  // setTimeout(() => selectedContainer.style.opacity = 1, 100);
+}
+
+function isMediaScreen() {
+  return window.innerWidth < 768;
+}
+
+function appendCreditsToAboutIfMedia() {
+  credits = document.getElementById("credits");
+  credits.style.display = "intitial";
+  document.getElementById("about-container").appendChild(credits);
+}
+
+if (isMediaScreen()) {
+  appendCreditsToAboutIfMedia();
 }
 
 function showAbout() {
@@ -158,7 +169,7 @@ function showAbout() {
   }
 }
 
-// have to make the state of the remaining buttons false when another is push!
+// Media screens buttons
 
 function showPlot() {
   let container = document.getElementById("plot-container");
@@ -173,4 +184,17 @@ function showGraph() {
   document.getElementById("main-title").innerHTML = "Ordering of metabolic fluxes in <em>Escherichia coli</em>";
   document.getElementById("reaction-form").style.display = "initial";
   showContainer(container);
+}
+
+function appendCreditsToAboutIfMedia() {
+  credits = document.getElementById("credits")
+  document.getElementById("about-container").appendChild(credits);
+}
+
+if (isMediaScreen()) {
+  appendCreditsToAboutIfMedia();
+}
+
+function isMediaScreen() {
+  return window.innerWidth < 768;
 }
