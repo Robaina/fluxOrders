@@ -151,10 +151,10 @@ if (isMediaScreen()) {
 function showAbout() {
   aboutButtonPressed = !aboutButtonPressed;
   let container = document.getElementById("about-container");
-  document.getElementById("main-title").innerHTML = "The flux order relation";
 
   if (window.innerWidth < 768) {
       document.getElementById("reaction-form").style.display = "none";
+      document.getElementById("main-title").innerHTML = "The flux order relation";
       showContainer(container);
 
   } else {

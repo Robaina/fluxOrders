@@ -22,4 +22,5 @@ let options = {
     transform: function( node, pos ){ return pos; }, // a function that applies a transform to the final node position
     ready: function(){}, // on layoutready
     stop: function(){} // on layoutstop
+
 };
