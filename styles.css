@@ -28,7 +28,7 @@ a {
 
 footer {
   position: absolute;
-  top: 89vmin;
+  top: 92vmin;
   left: 3%;
   font-size: 2vmin;
   z-index: 2;
@@ -116,7 +116,7 @@ select option {
   position: absolute;
   left: calc( (100vmax - 95vmax) / 2 );
   padding: 0%;
-  top: 20vmin;
+  top: 25vmin;
   z-index: 0;
 }
 
