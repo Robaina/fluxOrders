@@ -5,6 +5,7 @@ body {
   padding: 0px;
   background-color: var(--body-color);
   color: rgb(182, 182, 182);
+  overflow: hidden;
 }
 
 html {
