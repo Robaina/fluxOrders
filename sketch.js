@@ -57,6 +57,9 @@ let cy = cytoscape({
   container: graphContainer,
   elements: data,
   style: graphStyle,
+  userZoomingEnabled: false,
+  autoungrabify: false,
+  userPanningEnabled: false
 });
 
 // Initialize graph
