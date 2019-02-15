@@ -36,7 +36,7 @@ footer {
   font-size: 2vh;
   z-index: 2;
   margin-left: calc( (100vw - 90vw) / 2 );
-  margin-top: -5vh;
+  margin-top: 5vh;
 }
 
 #flex-container {
