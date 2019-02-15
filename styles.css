@@ -5,7 +5,6 @@ body {
   padding: 0px;
   background-color: var(--body-color);
   color: rgb(182, 182, 182);
-  overflow: hidden;
 }
 
 html {
@@ -13,8 +12,14 @@ html {
 }
 
 h1 {
-  font-size: 2.6vmax;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  font-size: 3vmax;
+  font-family: serif;
   z-index: -1;
+}
+h2 {
+  font-size: 1.8vmax;
 }
 
 p {
@@ -28,24 +33,37 @@ a {
 }
 
 footer {
-  position: absolute;
-  top: 92vmin;
-  left: 3%;
-  font-size: 2vmin;
+  font-size: 2vh;
   z-index: 2;
+  margin-left: calc( (100vw - 90vw) / 2 );
+  margin-top: -5vh;
 }
 
-form {
-  position: absolute;
-  top: 7vmin;
-  left: 52vmax;
+#flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 90vw;
+  margin-left: 5vw;
+}
+
+#form-container {
+  z-index: 2;
+  color: inherit;
+  min-width: 20%;
+}
+
+#reaction-form {
+  position: relative;
   z-index: 2;
   color: inherit;
 }
 
 #form-reaction {
+  position: relative;
+  height: 10%;
   font-size: 1.8vmax;
-  text-align: center;
+  margin-left: 30%;
 }
 
 #select-list {
@@ -53,8 +71,7 @@ form {
   text-align-last: center;
   color: var(--orange-color);
   background-color: var(--body-color);
-  max-width: 44vmax;
-  height: 7vmin;
+  max-width: 100%;
 }
 
 select option {
@@ -62,82 +79,20 @@ select option {
   font-size: 1.2vmax;
 }
 
-#about-container {
-  position: absolute;
-  top: 11vmin;
-  right: 2vmax;
-  width: 45vmax;
-  height: auto;
-  font-size: 1.6vw;
-  background-color: var(--body-color);
-  border-radius: 5%;
-  /* border-radius: 25px; */
-  border: 2px solid var(--orange-color);
-  padding: 20px;
-  z-index: 3;
-  opacity: 0;
-  transition: opacity 1.5s;
-  display: none;
-}
-
-.button {
-  position: absolute;
-  top: -1vh;
-  left: 3.5vmax;
-  padding: 1vmax;
-  font-size: 2.3vmax;
-  width: 10vmax;
-  background-color: rgb(131, 131, 131);
-  border: none;
-  color: var(--body-color);
-  text-align: center;
-  text-decoration: none;
-  display: block;
-  margin: 1em 0em;
-  cursor: pointer;
-  border-radius: 1vmax;
-  user-select: none;
-  outline: none;
-  box-shadow: 0 0.5vmax rgb(221, 221, 221);
-  z-index: 2;
-}
-.button:focus {
-  background-color: var(--orange-color);
-  /* box-shadow: 0 0.3vmax rgb(102, 102, 102); */
-  /* transform: translateY(4px); */
-}
-
-#graph-button, #plot-button {
-  display: none;
-}
-
-.graph {
-  width: 95vmax;
-  height: 80vmin;
-  position: absolute;
-  left: calc( (100vmax - 95vmax) / 2 );
-  padding: 0%;
-  top: 25vmin;
-  z-index: 0;
-}
-
 #plot-container {
-  position: absolute;
-  top: 6vmin;
-  left: 4vmax;
-  height: 35vmin;
-  width: 48vmax;
+  min-width: 60%;
+  margin-right: 0%;
+  margin-bottom: 0;
   z-index: 1;
 }
 
 #plot-title {
   position: relative;
-  left: 0%;
-  top: 0%;
-  width: 100%;
+  /* width: 100%; */
   height: 10%;
   font-size: 1.8vmax;
-  text-align: center;
+  margin-left: 35%;
+  /* text-align: center; */
 }
 
 #plot-wrapper {
@@ -147,113 +102,63 @@ select option {
   height: auto;
 }
 
+#about-container {
+  width: 85vw;
+  margin-left: calc( (100vw - 85vw) / 2 );
+  margin-top: 10vh;
+  margin-bottom: 5vh;
+  background-color: var(--body-color);
+  z-index: 3;
+}
+
+.graph {
+  width: 90vw;
+  height: 75vh;
+  margin-left: calc( (100vw - 90vw) / 2 );
+  padding: 0%;
+  margin-bottom: 5vh;
+  margin-top: -15vh;
+  z-index: 0;
+}
+
+::-webkit-scrollbar {
+  width: 1vw;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 0.25vw grey;
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--orange-color);
+  border-radius: 0.5vw;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-color);
+}
 
 @media only screen and (max-width: 768px) {
-
-  #about-container {
-    top: auto;
-    right: auto;
-    width: 80vmax;
-    display: inline-block;
-    position: absolute;
-    margin-top: 5vmax;
-    margin-left: 7vmax;
-    margin-right: 5vmax;
-    padding: 0;
-    border: 0;
-    display: none;
-    opacity: 1;
-    /* visibility: hidden; */
+  #flex-container {
+    flex-direction: column-reverse;
+    margin-bottom: 10vh;
   }
-
-  form {
-    position: static;
-    margin-left: 5vw;
-    margin-top: 8vh;
-  }
-
-  #form-reaction {
-    font-size: 3vmax;
-    position: relative;
-    left: -18%;
-    display: none;
-  }
-
-  #graph-container {
-    position: absolute;
-    top: 0;
-    left: 0vw;
-    height: 100vmin;
-    width: 90vmax;
-    margin-left: 5vmax;
-    padding: 0;
-    z-index: -1;
-
-  }
-  .graph {
-    position: relative;
-    top: 0;
-    left: 0vw;
-    width: 100%;
-    height: 100%;
-  }
-
   #plot-container {
-    position: absolute;
-    top: 28vmin;
-    left: 10vmax;
-    height: 70vmin;
-    width: 100vmax;
-    display: none;
-    z-index: 1;
+    width: 90%;
+    margin-top: 5vh;
   }
-
+  #form-container {
+    margin-left: 5vw;
+  }
+  #form-reaction {
+    margin-left: 40%;
+  }
   #plot-title {
-    font-size: 2vmax;
-    margin-bottom: 0;
-    margin-left: 0;
-    display: none;
+    margin-left: 45%;
   }
-
-  #plot-wrapper {
-    position: relative;
-    top: 0%;
-    width: 100%;
-    display: inherit;
-    /* height: auto; */
-  }
-
-  .button-container {
-    display: inline-block;
-    margin-left: 2vmax;
-  }
-
-  .button {
-    position: static;
-    width: 7vw;
-    font-size: 80%;
-  }
-
-  h1 {
-    margin-top: 1%;
-    margin-left: 5%;
-    display: inline-block;
-  }
-
-  #graph-button, #plot-button, #about-button {
-    display: initial;
-  }
-
   footer {
-    display: none;
-  }
-
-  p {
-    font-size: 1.5vmax;
-  }
-
-  .github-corner, h2 {
-    display: none;
+    margin-top: -10vh;
   }
 
 }
