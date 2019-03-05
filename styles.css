@@ -60,7 +60,7 @@ footer {
   color: inherit;
 }
 
-#form-reaction {
+#form-title {
   position: relative;
   height: 10%;
   font-size: 1.8vmax;
@@ -118,8 +118,8 @@ select option {
   margin-left: calc( (100vw - 90vw) / 2 );
   padding: 0%;
   margin-bottom: 5vh;
-  margin-top: -15vh;
-  z-index: 0;
+  margin-top: -25vh;
+  z-index: 4;
 }
 
 ::-webkit-scrollbar {
