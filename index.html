@@ -1,107 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="An interactive graph of the flux order relations of Escherichia coli">
+    <meta name="keywords" content="Flux order relations, Escherichia coli, Metabolic modelling">
+    <meta name="author" content="Semidán Robaina Estévez">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Flux Order Relation</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.ico">
+    <link rel="stylesheet" href="master.css">
+  </head>
+  <body>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="An interactive graph of the flux order relations of Escherichia coli">
-  <meta name="keywords" content="Flux order relations, Escherichia coli, Metabolic modelling">
-  <meta name="author" content="Semidán Robaina Estévez">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Flux Orders</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="imgs/favicon-32x32.ico">
+    <div id="page-container">
+      <div id="content-wrap">
 
-  <script src="libs/cytoscape.js"></script>
-  <script src="libs/dagre.js"></script>
-  <script src="libs/cytoscape-dagre.js"></script>
-  <script src="libs/jquery-3.3.1.min.js"></script>
-  <script src="libs/plotly-latest.min.js"></script>
-  <script src="libs/pace.min.js"></script>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="waitbar.css">
+        <div class="header">
+          <div class="title">
+            Flux-based hierarchical organization of <em>Escherichia coli</em>'s metabolic network
+          </div>
+          <p id="names">Semidán Robaina Estévez, Zoran Nikoloski</p>
+          <p id="intro"></p>
+        </div>
 
-  <!-- Sets $ as inline MathJax symbols -->
-  <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-    });
-  </script>
+        <div class="grid_container">
 
-  <!-- Allows MathJax in the document: Note configuration changed to "SVG to avoid interference with plot.ly which renders in SVG"  TeX-MML-AM_CHTML TeX-AMS_SVG-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/latest.js?config=default" async></script>
+          <div class="grid_item" tabindex="0">
+            <a class="entry_link" href="https://www.biorxiv.org/content/10.1101/731356v1" target="_blank">
+              <div class="grid_item_content">
+                <h1 class="grid_item_title">Publication</h1>
+                <img class="thumbnail" src="/imgs/paper_thumbnail.png" alt="Responsive image">
+              </div>
+            </a>
+          </div>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-131412021-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-131412021-1');
-  </script>
+          <div class="grid_item" tabindex="0">
+            <a class="entry_link" href="/Robaina_Nikoloski_2019/Code/Robaina-Nikoloski-2019" target="_blank">
+              <div class="grid_item_content">
+                <h1 class="grid_item_title">Jupyter Notebook</h1>
+                <img class="thumbnail" src="/imgs/jupyter_thumbnail.png" alt="Responsive image">
+              </div>
+            </a>
+          </div>
 
-</head>
+          <div class="grid_item" tabindex="0">
+            <a class="entry_link" href="/fluxOrderDAG" target="_blank">
+              <div class="grid_item_content">
+                <h1 class="grid_item_title">Interactive DAG</h1>
+                <img class="thumbnail" src="/imgs/DAG_thumbnail.png" alt="Responsive image">
+              </div>
+            </a>
+          </div>
 
-<body>
+          <div class="grid_item" tabindex="0">
+            <a class="entry_link" href="https://github.com/Robaina/fluxOrders" target="_blank">
+              <div class="grid_item_content">
+                <h1 class="grid_item_title">Code and Data</h1>
+                <img class="thumbnail" src="/imgs/github_icon_light.png" alt="Responsive image">
+              </div>
+            </a>
+          </div>
 
-  <h1 style="text-align: center;" id="main-title">Flux-based hierarchical organization of <em>Escherichia coli</em>'s metabolic network</h1>
+        </div>
 
-  <article id="about-container">
-    <h2 style="text-align: center;">The flux order relation</h2>
-
-    <p>The following <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">directed acyclic graph (DAG)</a> represents the <a href="https://en.wikipedia.org/wiki/Partially_ordered_set">partially ordered set</a> induced by the flux order relation in <a href="https://www.nature.com/articles/srep39647">EColiCore2</a> a core metabolic network of the bacterium <i>Escherichia coli</i>. In other words, this is the <a href="https://en.wikipedia.org/wiki/Hasse_diagram">Hasse diagram</a> of the partially (flux) ordered set.</p>
-
-    <p>Two reactions $r_i, r_j$ are flux-ordered if their fluxes satisfy $$ v_i \geq v_j \; ∀ v : Sv = 0, v_{min} \leq v \leq v_{max} $$ where $S$ corresponds to the stoichiometric matrix of the metabolic network, $v$ a vector of flux values for every reaction in the system and $v_{min}, v_{max}$ correspond to the boundary flux values of the system &mdash; a typical convention in <a href="https://en.wikipedia.org/wiki/Flux_balance_analysis">constraint-based metabolic modeling</a>. Hence, a flux-ordered reaction pair satisfies the order relation in any steady-state of the system.</p>
-
-    <p>In this graph, nodes are biochemical reactions while (directed) edges represent the flux order relation, <i>i.e.</i>, and edge $v_i → v_j$ implies $v_i \geq v_j$. The current selected node is green-colored and the name of the biochemical reaction is displayed above the graph. All parent reactions of the selected node, <i>i.e.</i>, all reactions with an equal or greater flux value than the selected node, are colored in pink, while all children reactions, <i>i.e.</i>, all reactions with an equal or lower flux value, are colored in purple. The selected reaction can be changed by searching for the reaction name in the drop list or by directly clicking or touching a node. Mouse-hovering on nodes displays the full reaction name instead of the default reaction identifier. The graph also admits drag events, thanks to <a href="http://js.cytoscape.org/">Cytoscape.js</a></p>
-
-    <p>The bar plot represents the number of reactions per metabolic subsystem in the sets of parent and children reactions in the selected node. Reactions with a higher number of children reactions tend to be associated to critical subsystems such as ATP production or nutrient exchange.</p>
-
-    <p>This interactive graph is part of the publication <a href="#"><i>Flux-based hierarchical organization of </i>Escherichia coli<i>'s metabolic network</i></a> by Semidán Robaina-Estévez and Zoran Nikoloski.</p>
-
-    </p>
-  </article>
-
-  <div id="flex-container">
-
-    <div id="plot-container">
-      <p id="plot-title">Metabolic subsystems</p>
-      <div id="plot-wrapper">
-        <div id="barChart"></div>
       </div>
+
+      <footer id="footer">
+        <a href="https://semidanrobaina.com" target="_blank">Semidán Robaina Estévez, 2019</a>
+      </footer>
+
     </div>
 
-    <div id="form-container">
-      <p id="form-title">Current reaction: </p>
-      <form id="reaction-form">
-        <select name="reactions" id="select-list" onchange="changeSelectedReaction()">
-        </select>
-      </form>
-    </div>
-
-  </div>
-
-  <div id="graph-container">
-    <div class="graph" id="cy"></div>
-  </div>
-
-  <footer>
-      <p id="credits"><a href="https://www.github.com/Robaina" id="me">Semidán Robaina Estévez</a>, 2018<br>
-      Using <a href="http://js.cytoscape.org/">Cytoscape.js</a>, <a href="https://plot.ly/javascript">Plotly.js</a>, <a href="https://github.com/dagrejs/dagre">Dagre.js</a> and <a href="https://github.hubspot.com/pace/docs/welcome">Pace.js.</a></p>
-  </footer>
-
-  <script src="data/graphLayoutOptions.js"></script>
-  <script src="data/graphData.json"></script>
-  <script src="data/graphStyle.js"></script>
-  <script src="data/barPlot.js"></script>
-  <script src="sketch.js"></script>
-
-  <!-- <a href="https://www.github.com/Robaina/fluxOrders">Code@GitHub</a> -->
-
-
-
-</body>
-
+  </body>
 </html>

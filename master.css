@@ -1,0 +1,103 @@
+body {
+  --FancyColor: rgb(226, 165, 29);
+  --FontColor: rgb(154, 157, 153);
+  --BorderColor: var(--FontColor);
+  --grid_width: 75vw;
+  --grid_item_margin: calc(0.01 * var(--grid_width));
+  --grid_item_border_width: calc(0.005 * var(--grid_width));
+  --grid_item_width: calc(0.5 * (var(--grid_width) - 4 * (var(--grid_item_border_width) + var(--grid_item_margin))));
+  overflow-x: hidden;
+
+  background-color: rgb(51, 51, 51);
+  color: var(--FontColor);
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+  color: var(--FontColor);
+}
+.header {
+  width: 100vw;
+  height: 30vh;
+  text-align: center;
+}
+
+.title {
+  font-size: 4vw;
+  padding-top: 2%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+#names {
+  font-size: 2vw;
+}
+#intro {
+  
+}
+.grid_container {
+  display: grid;
+  /* grid-template-columns: auto auto; */
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-auto-flow: row dense;
+  width: var(--grid_width);
+  margin-right: 0;
+  margin-left: calc((100vw - var(--grid_width)) / 2);
+  margin-bottom: 5vh;
+  margin-top: 5vh;
+  /* margin: auto; */
+}
+.grid_item {
+  width: var(--grid_item_width);
+  width: auto;
+  height: auto;
+  border: var(--grid_item_border_width) solid var(--BorderColor);
+  /* border-radius: 0px; */
+  margin: var(--grid_item_margin);
+  cursor: pointer;
+}
+.grid_item:hover {
+  border: var(--grid_item_border_width) solid var(--FancyColor);
+}
+.grid_item_title {
+  width: 100%;
+  text-align: center;
+  font-size: 1.4em;
+  margin: 0;
+}
+.thumbnail {
+  width: 80%;
+  margin: 10%;
+  margin-top: 5%;
+}
+.grid_link {
+  text-decoration: none;
+  color: var(--FontColor);
+}
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+#content-wrap {
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 10vh;
+  font-size: 2vw;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) and (orientation: portrait) {
+  .title {
+    font-size: 4vw;
+  }
+  #footer {
+    font-size: 3vw;
+  }
+}
