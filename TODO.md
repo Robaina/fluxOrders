@@ -1,3 +1,1 @@
-1. Add DropBox link to README.txt in Data folder
-2. Add DropBox link to Jupyter notebook
-3. Update Jupyter html
+1. Add __init__.py file in Code directory to be able to import modules from outside the directory
