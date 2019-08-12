@@ -2,7 +2,7 @@ body {
   --FancyColor: rgb(226, 165, 29);
   --FontColor: rgb(154, 157, 153);
   --BorderColor: var(--FontColor);
-  --grid_width: 75vw;
+  --grid_width: 80vw;
   --grid_item_margin: calc(0.01 * var(--grid_width));
   --grid_item_border_width: calc(0.005 * var(--grid_width));
   --grid_item_width: calc(0.5 * (var(--grid_width) - 4 * (var(--grid_item_border_width) + var(--grid_item_margin))));
@@ -19,23 +19,24 @@ a {
   text-decoration: none;
   color: var(--FontColor);
 }
-.header {
+#header {
   width: 100vw;
-  height: 30vh;
+  height: 33vh;
   text-align: center;
 }
 
-.title {
-  font-size: 4vw;
-  padding-top: 2%;
+#title {
+  font-size: 6vh;
+  padding-top: 0%;
   padding-left: 10%;
   padding-right: 10%;
+  text-align: center;
 }
 #names {
-  font-size: 2vw;
+  font-size: 3vh;
 }
 #intro {
-  
+
 }
 .grid_container {
   display: grid;
@@ -92,12 +93,25 @@ a {
   font-size: 2vw;
   text-align: center;
 }
+#footer:hover > a {
+  color: var(--FancyColor);
+}
 
 @media only screen and (max-width: 768px) and (orientation: portrait) {
-  .title {
-    font-size: 4vw;
+  #title {
+    font-size: 5vh;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+  #names {
+    font-size: 2.5vh;
+    padding-left: 10%;
+    padding-right: 10%;
   }
   #footer {
     font-size: 3vw;
+  }
+  .grid_item {
+    margin: 1vh;
   }
 }
