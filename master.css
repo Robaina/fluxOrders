@@ -21,7 +21,7 @@ a {
 }
 #header {
   width: 100vw;
-  height: 33vh;
+  height: auto;
   text-align: center;
 }
 
@@ -35,9 +35,7 @@ a {
 #names {
   font-size: 3vh;
 }
-#intro {
 
-}
 .grid_container {
   display: grid;
   /* grid-template-columns: auto auto; */
@@ -47,7 +45,7 @@ a {
   margin-right: 0;
   margin-left: calc((100vw - var(--grid_width)) / 2);
   margin-bottom: 5vh;
-  margin-top: 5vh;
+  margin-top: 10vh;
   /* margin: auto; */
 }
 .grid_item {
