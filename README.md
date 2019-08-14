@@ -1,6 +1,7 @@
-# Flux order relations in _Escherichia coli_
-An interactive hierarchical graph representing the flux order relations in the metabolic model iJO1366 of _E. coli_.
+This repository contains all the code needed to reproduce the results of the publication <a href="" target="_blank">Flux-based hierarchical organization of _Escherichia coli_'s metabolic network</a>.
 
-<img style="margin:0px auto;display:block" src="/imgs/sketch.png" alt="Responsive image" width=450>
+A Jupyter notebook with the followed workflow and all required python modules are located in the subdirectory: Robaina_Nikoloski_2019 of this repository.
 
-Tested on desktop versions of Chrome, Firefox and Edge.
+Additionally, an interactive directed acyclic graph (DAG) depicting the flux-ordered pairs of _E. coli_'s central carbon metabolism can be found in the HTML "fluxOrderDAG.html" (Tested on desktop versions of Chrome, Firefox and Edge).
+
+Finally, the publication, an online version of the Jupyter notebook and the interactive DAG can be accessed from https://robaina.github.io/fluxOrders (file "index.html").
