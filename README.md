@@ -1,4 +1,4 @@
-This repository contains all the code needed to reproduce the results of the publication <a href="" target="_blank">Flux-based hierarchical organization of _Escherichia coli_'s metabolic network</a>.
+This repository contains all the code needed to reproduce the results of the publication: <a href="https://www.biorxiv.org/content/10.1101/731356v1" target="_blank">Flux-based hierarchical organization of _Escherichia coli_'s metabolic network</a>.
 
 A Jupyter notebook with the followed workflow and all required python modules are located in the subdirectory: Robaina_Nikoloski_2019 of this repository.
 
