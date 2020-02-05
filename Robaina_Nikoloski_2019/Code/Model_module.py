@@ -127,9 +127,8 @@ class Model:
                 self.GEM.reactions[idx].macrosystem = 'Unassigned'
 
     def __enableUptakeOfCarbonSources(self):
-        if self.name == 'iJO1366':
-            self.GEM.reactions.get_by_id('EX_glyc__R_e').lower_bound = -1000
-            self.GEM.reactions.get_by_id('EX_ac_e').lower_bound = -1000
+        self.GEM.reactions.get_by_id('EX_glyc__R_e').lower_bound = -1000
+        self.GEM.reactions.get_by_id('EX_ac_e').lower_bound = -1000
 
     def __removeBlockedReactions(self, v_eps):
         blockedRxns = cobra.flux_analysis.find_blocked_reactions(
@@ -208,7 +207,7 @@ class Model:
 
         if isinstance(ReactionID, list):
             ReactionID = ReactionID[0]
-
+        
         # Optimize model
         ReactionName = self.GEM.reactions.get_by_id(ReactionID).name
         self.GEM.objective = self.GEM.reactions.get_by_any(ReactionID)
@@ -337,7 +336,8 @@ class Model:
             FVAmin, FVAmax = FVAout['FVAmin'], FVAout['FVAmax']
         else:
             FVAmin, FVAmax = None, None
-        fluxSample = np.round(self.getFluxSample(nsamples).values.transpose(), 5)
+#         fluxSample = np.round(self.getFluxSample(nsamples).values.transpose(), 5)
+        fluxSample = np.round(self.getFluxSampleInRprogram(nsamples).values.transpose(), 5)
         candidatePairs = []
         for rxn_i in range(self.numberOfReactions):
             for rxn_j in range(self.numberOfReactions):
@@ -351,20 +351,26 @@ class Model:
 
         self.candidatePairs = candidatePairs
 
-    def exportToCSV(self, directory, attributes=['S', 'lb', 'ub', 'candidatePairs']):
+    def exportToCSV(self, directory, attributes=['S', 'lb', 'ub', 'candidatePairs'],
+                   nametag=None):
         """
         Export attributes to csv in the specified directory. Default directory is the
         working directory defined for the class Model
         """
         if directory is None:
             raise ValueError('Missing directory to save files in!')
+        if nametag is None:
+            tag = ''
+        else:
+            tag = '_' + nametag
 
         self.lb = self.getLowerBounds()
         self.ub = self.getUpperBounds()
         self.S = self.getStoichiometricMatrix()
         for attribute in attributes:
             item = getattr(self, attribute)
-            np.savetxt(directory + '/' + self.name + '_' + attribute + '.csv', item, delimiter=',')
+            np.savetxt(f'{directory}/{self.name}_{attribute}{tag}.csv',
+                       item, delimiter=',')
 
     def getFluxOrders(self, AdjacencyMatrix=None, fctable=None):
         """
@@ -384,8 +390,23 @@ class Model:
         """
         Parser = DataParser(self, workDir=self.workDir + '/Data')
         return Parser
+    
+    def getReactionsWithGeneData(self, geneWithDataIDs):
+        """
+        Returns a list with all reactions in the model that have associated gene data
+        Arguments:
+        ---------
+        geneWithDataIDs: a list containing the IDs of genes with available data
+        """
+        rxnsWithData = []
+        for rxn in self.GEM.reactions:
+            genes = [gene.id for gene in rxn.genes if gene.id in geneWithDataIDs]
+            if len(genes) > 0:
+                rxnsWithData.append(rxn.id)
+        return rxnsWithData
 
-
+    
+    
 # Other functions
 def getFluxSampleInRprogram(S, nsamples=5000, lb=None, ub=None):
     """
@@ -398,7 +419,8 @@ def getFluxSampleInRprogram(S, nsamples=5000, lb=None, ub=None):
 
 
 def convert_to_irreversible(cobra_model):
-    """Split reversible reactions into two irreversible reactions: one going in
+    """
+    Split reversible reactions into two irreversible reactions: one going in
     the forward direction, the other in the backward direction. In this manner,
     all reactions in the model carry non-negative flux values. Forward reactions
     are tagged as "forward" while backward reactions as "backward".

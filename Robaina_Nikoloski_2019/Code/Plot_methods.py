@@ -27,18 +27,18 @@ getFluxOrders = ro.r['get_flux_orders']
 numpy2ri.activate()
 
 
-def plotDataOrder(data, color='#ffbf00', interactive=True, has_protein_costs=True):
+def plotDataOrder(data, color='#ffbf00', interactive=True, has_protein_costs=True, img_folder_name=None):
     if interactive and has_protein_costs:
-        plot_func = plotDataOrderInteractiveWithCosts
+        plot_func = plotDataOrderInteractiveWithCostsAndAlphas
     elif interactive and not has_protein_costs:
-        plot_func = plotDataOrderInteractiveWithoutCosts
+        plot_func = plotDataOrderInteractiveWithoutCostsAndAlphas
     else:
         plot_func = plotDataOrderStatic
 
-    return plot_func(data, color)
+    return plot_func(data, color=color, img_folder_name=img_folder_name)
 
 
-def plotDataOrderStatic(plot_data, color='#25a9f4'):
+def plotDataOrderStatic(plot_data, color='#25a9f4', img_folder_name=None):
 
     distributionSize = plot_data['distribution_size']
     cumSumDistributions = plot_data['cumulative']
@@ -81,7 +81,7 @@ def plotDataOrderStatic(plot_data, color='#25a9f4'):
     return fig
 
 
-def plotDataOrderInteractiveWithoutCosts(plot_data, color='#ffbf00'):
+def plotDataOrderInteractiveWithoutCosts(plot_data, color='#ffbf00', img_folder_name=None):
     """
     Plot an interactive figure (of class StaticInteract) containig the distributions of
     data differences for the ordered pairs and the permutation sample. It takes as input
@@ -89,6 +89,8 @@ def plotDataOrderInteractiveWithoutCosts(plot_data, color='#ffbf00'):
     containing the color code to be used when plotting the ordered data distribution.
     """
     plt.rcParams.update({'figure.max_open_warning': 0})
+    if img_folder_name is None:
+        img_folder_name = plot_data[list(plot_data.keys())[0]]['dataName'].replace('(glucose)', '')
 
     def plot_func(carbonSource):
         warnings.filterwarnings('ignore')
@@ -131,12 +133,12 @@ def plotDataOrderInteractiveWithoutCosts(plot_data, color='#ffbf00'):
     interactive_fig = StaticInteract(
         plot_func,
         carbonSource=DropDownWidget(carbonSources, description='Carbon source'),
-        interact_name=plot_data[list(plot_data.keys())[0]]['dataName'].replace('(glucose)', '')
+        interact_name=img_folder_name
         )
     return interactive_fig
 
 
-def plotDataOrderInteractiveWithCosts(plot_data, color='#ffbf00'):
+def plotDataOrderInteractiveWithoutCostsAndAlphas(plot_data, color='#ffbf00', img_folder_name=None):
     """
     Plot an interactive figure (of class StaticInteract) containig the distributions of
     data differences for the ordered pairs and the permutation sample. It takes as input
@@ -144,6 +146,71 @@ def plotDataOrderInteractiveWithCosts(plot_data, color='#ffbf00'):
     containing the color code to be used when plotting the ordered data distribution.
     """
     plt.rcParams.update({'figure.max_open_warning': 0})
+    if img_folder_name is None:
+        first_level_key_1 = list(plot_data.keys())[0]
+        second_level_key_1 = list(plot_data[first_level_key_1].keys())[0]
+        img_folder_name = plot_data[first_level_key_1][second_level_key_1]['dataName'].replace('(glucose)', '')
+
+    def plot_func(a_carbonSource, b_alpha):
+        warnings.filterwarnings('ignore')
+        carbonSource = a_carbonSource
+        alpha = b_alpha
+        distributionSize = plot_data[carbonSource][alpha]['distribution_size']
+        cumSumDistributions = plot_data[carbonSource][alpha]['cumulative']
+        countsInOrderedPairs = plot_data[carbonSource][alpha]['ordered']
+        countsInSample = plot_data[carbonSource][alpha]['sample']
+        areaOrdered = plot_data[carbonSource][alpha]['areaAboveZeroOfOrderedPairs']
+        areaSample = plot_data[carbonSource][alpha]['areaAboveZeroOfSample']
+        pvalue = plot_data[carbonSource][alpha]['pvalue']
+        binEdges = plot_data[carbonSource][alpha]['binEdges']
+        dataName = plot_data[carbonSource][alpha]['dataName']
+
+        fig = plt.figure(figsize=(20, 7))
+        suptitle = r'{data}, area($\delta$ > 0) = {area:.2f}, alpha = {alpha}'.format(
+            data=dataName,
+            area=areaOrdered,
+            alpha=alpha)
+        plt.suptitle(suptitle, fontsize=16)
+
+        plt.subplot(121)
+        title = '$p$-value = {:.4f}'.format(pvalue)
+        plotCumulativeDistributions(cumSumDistributions,
+                                    binEdges, color, title, xlabel=r'$\delta$')
+        plt.subplot(122)
+        counts = {'Ordered': countsInOrderedPairs / countsInOrderedPairs.sum(),
+                  'Random': countsInSample / countsInSample.sum()}
+        title = 'Size = {}'.format(distributionSize)
+        colors = [color, '#afafaf']
+        labels = [r'{}, area($\delta$ > 0) = {:.2f}'.format(type, area)
+                  for type, area in zip(list(counts.keys()), [areaOrdered, areaSample])]
+
+        plotHistograms(counts, binEdges, colors=colors, labels=labels, title=title,
+                       xlabel=r'$\delta$')
+        plt.subplots_adjust(wspace=0.3, hspace=None)
+        warnings.resetwarnings()
+        return fig
+
+    carbonSources = list(plot_data.keys())
+    alphas = list(plot_data['glucose'].keys())
+    interactive_fig = StaticInteract(
+        plot_func,
+        a_carbonSource=DropDownWidget(carbonSources, description='Carbon source', default='glucose'),
+        b_alpha=DropDownWidget(alphas, description='alpha (biomass)', default=0.95),
+        interact_name=img_folder_name
+        )
+    return interactive_fig
+
+
+def plotDataOrderInteractiveWithCosts(plot_data, color='#ffbf00', img_folder_name=None):
+    """
+    Plot an interactive figure (of class StaticInteract) containig the distributions of
+    data differences for the ordered pairs and the permutation sample. It takes as input
+    plot_data: the dictionary returned by Orders.evaluateFluxOrders() and color: a str
+    containing the color code to be used when plotting the ordered data distribution.
+    """
+    plt.rcParams.update({'figure.max_open_warning': 0})
+    if img_folder_name is None:
+        img_folder_name = plot_data['glucose'][0]['dataName'].replace('(glucose)', '')
 
     def plot_func(carbonSource, percentile):
         warnings.filterwarnings('ignore')
@@ -187,9 +254,82 @@ def plotDataOrderInteractiveWithCosts(plot_data, color='#ffbf00'):
     PLabels = ['P' + str(p) for p in percentiles]
     interactive_fig = StaticInteract(
         plot_func,
-        carbonSource=DropDownWidget(carbonSources, description='Carbon source'),
-        percentile=DropDownWidget(percentiles, description='Percentile', labels=PLabels),
-        interact_name=plot_data['glucose'][0]['dataName'].replace('(glucose)', '')
+        carbonSource=DropDownWidget(carbonSources, description='Carbon source', default='glucose'),
+        percentile=DropDownWidget(percentiles, description='Percentile', labels=PLabels, default=0),
+        interact_name=img_folder_name
+        )
+    return interactive_fig
+
+
+def plotDataOrderInteractiveWithCostsAndAlphas(plot_data, color='#ffbf00', img_folder_name=None):
+    """
+    Plot an interactive figure (of class StaticInteract) containig the distributions of
+    data differences for the ordered pairs and the permutation sample. It takes as input
+    plot_data: the dictionary returned by Orders.evaluateFluxOrders() and color: a str
+    containing the color code to be used when plotting the ordered data distribution.
+    """
+    plt.rcParams.update({'figure.max_open_warning': 0})
+    if img_folder_name is None:
+        img_folder_name = plot_data['glucose'][0][0]['dataName'].replace('(glucose)', '')
+
+    def plot_func(a_carbonSource, b_percentile, c_alpha):
+        warnings.filterwarnings('ignore')
+        carbonSource = a_carbonSource
+        percentile = b_percentile
+        alpha = c_alpha
+
+        if alpha in plot_data[carbonSource].keys():
+            distributionSize = plot_data[carbonSource][alpha][percentile]['distribution_size']
+            cumSumDistributions = plot_data[carbonSource][alpha][percentile]['cumulative']
+            countsInOrderedPairs = plot_data[carbonSource][alpha][percentile]['ordered']
+            countsInSample = plot_data[carbonSource][alpha][percentile]['sample']
+            areaOrdered = plot_data[carbonSource][alpha][percentile]['areaAboveZeroOfOrderedPairs']
+            areaSample = plot_data[carbonSource][alpha][percentile]['areaAboveZeroOfSample']
+            pvalue = plot_data[carbonSource][alpha][percentile]['pvalue']
+            binEdges = plot_data[carbonSource][alpha][percentile]['binEdges']
+            dataName = plot_data[carbonSource][alpha][percentile]['dataName']
+            Plabel = '$P_{{}}$'.format(percentile)
+
+            fig = plt.figure(figsize=(20, 7))
+            suptitle = r'{data}, {plabel}, area($\hat{{\delta}}$ > 0) = {area:.2f}, alpha = {alpha}'.format(
+                data=dataName,
+                plabel=Plabel,
+                area=areaOrdered,
+                alpha=alpha)
+            plt.suptitle(suptitle, fontsize=16)
+
+            plt.subplot(121)
+            title = '$p$-value = {:.4f}'.format(pvalue)
+            plotCumulativeDistributions(cumSumDistributions,
+                                        binEdges, color, title)
+            plt.subplot(122)
+            counts = {'Ordered': countsInOrderedPairs / countsInOrderedPairs.sum(),
+                      'Random': countsInSample / countsInSample.sum()}
+            title = 'Size = {}'.format(distributionSize)
+            colors = [color, '#afafaf']
+            labels = [r'{}, area($\hat{{\delta}}$ > 0) = {:.2f}'.format(type, area)
+                      for type, area in zip(list(counts.keys()), [areaOrdered, areaSample])]
+
+            plotHistograms(counts, binEdges, colors=colors, labels=labels, title=title)
+            plt.subplots_adjust(wspace=0.3, hspace=None)
+        else:
+            fig = plt.figure(figsize=(20, 7))
+            plt.title(f'No data available for these flux-ordered pairs', fontsize=18)
+            plt.plot(np.zeros(30), np.zeros(30), 'w-')
+            
+        warnings.resetwarnings()
+        return fig
+
+    carbonSources = list(plot_data.keys())
+    percentiles = list(plot_data['glucose'][0].keys())
+    PLabels = ['P' + str(p) for p in percentiles]
+    alpha_values = list(plot_data['glucose'].keys())
+    interactive_fig = StaticInteract(
+        plot_func,
+        a_carbonSource=DropDownWidget(carbonSources, description='Carbon source', default='glucose'),
+        b_percentile=DropDownWidget(percentiles, description='Percentile', labels=PLabels, default=0),
+        c_alpha=DropDownWidget(alpha_values, description='alpha (biomass)', default=0.95),
+        interact_name=img_folder_name
         )
     return interactive_fig
 
@@ -659,3 +799,52 @@ def plotFluxSampleOfOrderedChain(Model, ordered_chain):
     plt.ylabel('v', fontsize=18)
     plt.xticks(range(len(ordered_chain)), ordered_chain, fontsize=16)
     plt.show()
+    
+    
+def plotNumberFluxOrderedAtP0WithData(plot_data):
+    """
+    Bar plot with number of flux-ordered reaction pairs per carbon source
+    across minimum biomass production cutoff values (alpha)
+    """
+    cost_P = 0
+    alphas = list(plot_data['glucose'].keys())
+    sources = plot_data.keys()
+    data = dict.fromkeys(alphas, [])
+    for alpha in alphas:
+        counts = []
+        for source in sources:
+            try:
+                counts.append(plot_data[source][alpha][cost_P]['distribution_size'])
+            except Exception:
+                counts.append(0)
+        data[alpha] = counts
+    df = pd.DataFrame.from_dict(data, orient='index', columns=sources)
+    df.plot.bar(rot=0, figsize=(12,8))
+    plt.xlabel('alpha')
+    plt.ylabel('counts')
+    plt.show()
+    return df
+
+
+def plotNumberOfFluxOrderedPairs(path_to_data=None, alphas=[0, 0.5, 0.75, 0.90, 0.925, 0.95, 1],
+                                 sources = ['glucose', 'glycerate', 'acetate']):
+    """
+    Bar plot with the number of flux ordered pairs for the three carbon sources
+    across parameter alpha (biomass lower bound) values
+    """
+    data = {}
+    sources = ['glucose', 'glycerate', 'acetate']
+    for alpha in alphas:
+        counts = []
+        for source in sources:
+            directory = path_to_data + f'/{source}/iJO1366_{source[:3]}_A_alpha={alpha}.csv'
+            A = np.genfromtxt(directory, delimiter=',')
+            counts.append(sum(sum(A)))
+        data[alpha] = counts
+        
+    df = pd.DataFrame.from_dict(data, orient='index', columns=sources)
+    df.plot.bar(rot=0, figsize=(12,8))
+    plt.xlabel('alpha')
+    plt.ylabel('counts')
+    plt.show()
+    return df

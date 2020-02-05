@@ -478,7 +478,7 @@ class OrderGraph:
                               + str(maximumSize) + ')')
             chain_size = size
 
-        chains = self.__getRandomChain(size=chain_size, source=source)
+        chains = self.getRandomChain(size=chain_size, source=source)
         max_chain_size = max([len(chain) for chain in chains.values()])
         targeted_size = min(chain_size, max_chain_size)
 
@@ -488,7 +488,7 @@ class OrderGraph:
                 break
         return orderedReactionChain
 
-    def __getRandomChain(self, size=None, source=None):
+    def getRandomChain(self, size=None, source=None):
         """
         Finds a random ordered chain of reactions of size equal to "size" (int). If
         provided, source is a reaction id, the function will try to find an ordered chain
@@ -651,6 +651,9 @@ class DataOrderEvaluator:
 
         meanDiffDistributionOrderedPairs = self.__evalReactionData(reactionData)
         distributionSize = len(meanDiffDistributionOrderedPairs)
+        if distributionSize == 0:
+            raise ValueError('No data available for any flux-ordered pair')
+
         areaAboveZeroOfOrderedPairs = getAreaAboveZero(
             meanDiffDistributionOrderedPairs)
 
@@ -670,6 +673,17 @@ class DataOrderEvaluator:
         for _ in range(sampleSize):
             permutedReactionData = permuteData(reactionData)
             meanDiffDistribution = self.__evalReactionData(permutedReactionData)
+            sampledDistributionSize = len(meanDiffDistribution)
+
+            counter = 0
+            while sampledDistributionSize == 0 and counter < 10:
+                permutedReactionData = permuteData(reactionData)
+                meanDiffDistribution = self.__evalReactionData(permutedReactionData)
+                sampledDistributionSize = len(meanDiffDistribution)
+                counter += 1
+
+            if counter >= 10:
+                raise ValueError('Not enough data avaialable for flux-ordered pairs')
 
             countsInSample += countValuesInBins(
                 meanDiffDistribution, binEdges)
@@ -684,7 +698,7 @@ class DataOrderEvaluator:
             if areaAboveZero >= areaAboveZeroOfOrderedPairs:
                 n_more_extreme += 1
 
-            del permutedReactionData, meanDiffDistribution
+            # del permutedReactionData, meanDiffDistribution
 
         mean_cumsum_sample = np.mean([current_cumsum_min, current_cumsum_max], axis=0)
         cumSumDistributions = {'cumSumOfOrderedPairs': cumSumOfOrderedPairs,
