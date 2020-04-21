@@ -385,3 +385,17 @@ get_flux_orders <- function(S, dx_eps=0, v_lb=NULL, v_ub=NULL, ncores=NULL,
   return(as.matrix(AdjMat))
 
 }
+
+
+#start = Sys.time()
+#sol = get_flux_orders(S = S, v_lb = lb, v_ub = ub, candidatePairs = candidatePairs, fileDir = getwd(), fileName = "A_gly_bio_0925")
+#end = Sys.time()
+#print(end - start)
+#print(sum(rowSums(sol)))
+#rm(sol)
+
+"S = data.matrix(read.csv(file = 'iJO1366_S_0.925_glycerate.csv', sep = ',', header = FALSE))
+lb = data.matrix(read.csv(file = 'iJO1366_lb_0.925_glycerate.csv', sep = ',', header = FALSE))
+ub = data.matrix(read.csv(file = 'iJO1366_ub_0.925_glycerate.csv', sep = ',', header = FALSE))
+candidatePairs = data.matrix(read.csv(file = 'iJO1366_candidatePairs_0.925_glycerate.csv', header = FALSE, sep = ','))
+"
